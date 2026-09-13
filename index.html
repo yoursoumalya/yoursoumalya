@@ -6,13 +6,12 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>ѕσυмαℓуα мαи∂αℓ</title>
+<title>ѕσυмαℓуα мαn∂αℓ</title>
 
-<!-- Elegant Unicode-friendly fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&family=Noto+Sans+Symbols+2&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap"
       rel="stylesheet">
 
 <style>
@@ -30,13 +29,14 @@ body {
     overflow: hidden;
 }
 
-/* =========================================
-   DARK FOSSILS-STYLE INTRO BACKGROUND
-   ========================================= */
-
 body {
     background: #090909;
 }
+
+
+/* ================================
+   INTRO
+   ================================ */
 
 .intro {
     position: fixed;
@@ -53,7 +53,7 @@ body {
         radial-gradient(
             ellipse at center,
             #151515 0%,
-            #0d0d0d 45%,
+            #0d0d0d 48%,
             #080808 100%
         );
 
@@ -64,17 +64,15 @@ body {
 }
 
 
-/* =========================================
+/* ================================
    ARTIST NAME
-   ========================================= */
+   ================================ */
 
 .name {
     position: relative;
 
     font-family:
         "Noto Serif",
-        "Noto Sans Symbols 2",
-        "Noto Sans",
         serif;
 
     font-size: clamp(2.2rem, 7vw, 6.2rem);
@@ -87,12 +85,6 @@ body {
 
     white-space: nowrap;
 
-    /*
-       Important:
-       The shine is clipped inside the text area.
-    */
-    overflow: hidden;
-
     animation:
         textAppear 1.5s
         cubic-bezier(.22,1,.36,1)
@@ -100,63 +92,74 @@ body {
 }
 
 
-/* =========================================
-   SHINE — ONLY INSIDE THE LETTERS
-   ========================================= */
+/* ================================
+   SHINE
+   ONLY INSIDE THE LETTERS
+   ================================ */
 
 .name::after {
 
-    content: "";
+    content: "ѕσυмαℓуα мαn∂αℓ";
 
     position: absolute;
 
-    top: -25%;
-    left: -45%;
+    inset: 0;
 
-    width: 28%;
-    height: 150%;
+    pointer-events: none;
+
+    /*
+       The shine exists as a TEXT layer,
+       not as a rectangular light.
+    */
+
+    color: transparent;
 
     background:
         linear-gradient(
             105deg,
+
             transparent 0%,
-            rgba(255,255,255,0.04) 20%,
-            rgba(255,255,255,0.35) 40%,
+
+            transparent 42%,
+
+            rgba(255,255,255,0.15) 46%,
+
             rgba(255,255,255,0.95) 50%,
-            rgba(255,255,255,0.35) 60%,
-            rgba(255,255,255,0.04) 80%,
+
+            rgba(255,255,255,0.15) 54%,
+
+            transparent 58%,
+
             transparent 100%
         );
 
-    transform: skewX(-18deg);
+    background-size: 220% 100%;
 
-    /*
-       Prevent shine from spreading
-       outside the letters.
-    */
-    mix-blend-mode: screen;
+    background-position: 120% 0;
 
-    pointer-events: none;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 
     animation:
-        shine 1.8s
+        textShine 1.8s
         cubic-bezier(.4,0,.2,1)
         1.25s
         forwards;
 }
 
 
-/* =========================================
+/* ================================
    TEXT APPEAR
-   ========================================= */
+   ================================ */
 
 @keyframes textAppear {
 
     0% {
         opacity: 0;
 
-        transform:
-            scale(0.94);
+        transform: scale(0.94);
 
         letter-spacing: 0.16em;
 
@@ -172,8 +175,7 @@ body {
     100% {
         opacity: 1;
 
-        transform:
-            scale(1);
+        transform: scale(1);
 
         letter-spacing: 0.045em;
 
@@ -182,47 +184,44 @@ body {
 }
 
 
-/* =========================================
-   LIGHT MOVES LEFT → RIGHT
-   ========================================= */
+/* ================================
+   SHINE MOVEMENT
+   ================================ */
 
-@keyframes shine {
+@keyframes textShine {
 
     0% {
-        left: -45%;
+        background-position: 120% 0;
     }
 
     100% {
-        left: 125%;
+        background-position: -120% 0;
     }
 }
 
 
-/* =========================================
-   INTRO FADES OUT
-   ========================================= */
+/* ================================
+   INTRO EXIT
+   ================================ */
 
 @keyframes introOut {
 
     0% {
         opacity: 1;
-
         visibility: visible;
     }
 
     100% {
         opacity: 0;
-
         visibility: hidden;
-
         pointer-events: none;
     }
 }
 
 
-/* =========================================
+/* ================================
    MOBILE
-   ========================================= */
+   ================================ */
 
 @media (max-width: 600px) {
 
@@ -246,7 +245,7 @@ body {
 <div class="intro">
 
     <div class="name">
-        ѕσυмαℓуα мαи∂αℓ
+        ѕσυмαℓуα мαn∂αℓ
     </div>
 
 </div>
