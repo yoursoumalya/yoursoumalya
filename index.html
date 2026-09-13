@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -8,13 +10,22 @@
 
 <title>ѕσυмαℓуα мαn∂αℓ</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap"
       rel="stylesheet">
 
+
 <style>
+
+/* =========================================
+   RESET
+   ========================================= */
 
 * {
     margin: 0;
@@ -29,73 +40,91 @@ body {
     overflow: hidden;
 }
 
+
+/* =========================================
+   BACKGROUND
+   ========================================= */
+
 body {
     background: #090909;
 }
 
 
-/* ================================
-   INTRO
-   ================================ */
+/* =========================================
+   INTRO SCREEN
+   ========================================= */
 
 .intro {
+
     position: fixed;
+
     inset: 0;
 
     width: 100%;
     height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background:
         radial-gradient(
             ellipse at center,
-            #151515 0%,
-            #0d0d0d 48%,
-            #080808 100%
+            #171717 0%,
+            #101010 42%,
+            #090909 78%,
+            #070707 100%
         );
 
     z-index: 9999;
 
     animation:
-        introOut 1s ease-in-out 4.2s forwards;
+        introOut 1s ease-in-out 4.35s forwards;
 }
 
 
-/* ================================
+/* =========================================
    ARTIST NAME
-   ================================ */
+   ========================================= */
 
 .name {
+
     position: relative;
+
+    display: inline-block;
 
     font-family:
         "Noto Serif",
         serif;
 
-    font-size: clamp(2.2rem, 7vw, 6.2rem);
+    font-size:
+        clamp(2.2rem, 7vw, 6.2rem);
 
     font-weight: 300;
 
     letter-spacing: 0.045em;
 
-    color: #e8e8e8;
+    color: #e7e7e7;
 
     white-space: nowrap;
 
+    /*
+       Keeps the animation elegant
+       instead of looking oversized.
+    */
+
     animation:
-        textAppear 1.5s
+        textAppear
+        1.45s
         cubic-bezier(.22,1,.36,1)
         forwards;
 }
 
 
-/* ================================
-   SHINE
-   ONLY INSIDE THE LETTERS
-   ================================ */
+/* =========================================
+   PREMIUM SHINE LAYER
+   ========================================= */
 
 .name::after {
 
@@ -108,139 +137,307 @@ body {
     pointer-events: none;
 
     /*
-       The shine exists as a TEXT layer,
-       not as a rectangular light.
+       The text itself is transparent.
+       Only the gradient inside the glyphs
+       becomes visible.
     */
 
     color: transparent;
 
-    background:
+    -webkit-text-fill-color: transparent;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    background-image:
+
         linear-gradient(
             105deg,
 
             transparent 0%,
 
-            transparent 42%,
+            transparent 38%,
 
-            rgba(255,255,255,0.15) 46%,
+            rgba(255,255,255,0.02) 42%,
 
-            rgba(255,255,255,0.95) 50%,
+            rgba(255,255,255,0.20) 45%,
 
-            rgba(255,255,255,0.15) 54%,
+            rgba(255,255,255,0.72) 48%,
 
-            transparent 58%,
+            rgba(255,255,255,1.00) 50%,
+
+            rgba(255,255,255,0.72) 52%,
+
+            rgba(255,255,255,0.20) 55%,
+
+            rgba(255,255,255,0.02) 58%,
+
+            transparent 62%,
 
             transparent 100%
         );
 
-    background-size: 220% 100%;
+    /*
+       A large gradient is necessary
+       for a smooth cinematic sweep.
+    */
 
-    background-position: 120% 0;
+    background-size: 260% 100%;
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    background-position: 130% 0;
 
-    -webkit-text-fill-color: transparent;
+    /*
+       Slight optical glow inside
+       the moving reflection.
+    */
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255,255,255,0.32)
+        );
+
+    opacity: 0;
 
     animation:
-        textShine 1.8s
-        cubic-bezier(.4,0,.2,1)
-        1.25s
+        premiumShine
+        2.15s
+        cubic-bezier(.35,0,.2,1)
+        1.15s
         forwards;
 }
 
 
-/* ================================
+/* =========================================
+   VERY SUBTLE SECOND REFLECTION
+   ========================================= */
+
+.name::before {
+
+    content: "ѕσυмαℓуα мαn∂αℓ";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    color: transparent;
+
+    -webkit-text-fill-color: transparent;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    background-image:
+
+        linear-gradient(
+            105deg,
+            transparent 43%,
+            rgba(255,255,255,0.08) 47%,
+            rgba(255,255,255,0.25) 50%,
+            rgba(255,255,255,0.08) 53%,
+            transparent 57%
+        );
+
+    background-size: 250% 100%;
+
+    background-position: 130% 0;
+
+    opacity: 0;
+
+    animation:
+        softReflection
+        2.15s
+        cubic-bezier(.35,0,.2,1)
+        1.15s
+        forwards;
+}
+
+
+/* =========================================
    TEXT APPEAR
-   ================================ */
+   ========================================= */
 
 @keyframes textAppear {
 
     0% {
+
         opacity: 0;
 
-        transform: scale(0.94);
+        transform:
+            scale(0.94);
 
-        letter-spacing: 0.16em;
+        letter-spacing:
+            0.16em;
 
-        filter: blur(8px);
+        filter:
+            blur(8px);
     }
 
     55% {
+
         opacity: 1;
 
-        filter: blur(0);
+        filter:
+            blur(0);
     }
 
     100% {
+
         opacity: 1;
 
-        transform: scale(1);
+        transform:
+            scale(1);
 
-        letter-spacing: 0.045em;
+        letter-spacing:
+            0.045em;
 
-        filter: blur(0);
+        filter:
+            blur(0);
     }
 }
 
 
-/* ================================
-   SHINE MOVEMENT
-   ================================ */
+/* =========================================
+   MAIN CINEMATIC LIGHT
+   ========================================= */
 
-@keyframes textShine {
+@keyframes premiumShine {
 
     0% {
-        background-position: 120% 0;
+
+        opacity: 0;
+
+        background-position:
+            135% 0;
+    }
+
+    12% {
+
+        opacity: 0.9;
+    }
+
+    25% {
+
+        opacity: 1;
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+
+    72% {
+
+        opacity: 0.95;
+    }
+
+    88% {
+
+        opacity: 0.35;
     }
 
     100% {
-        background-position: -120% 0;
+
+        opacity: 0;
+
+        background-position:
+            -135% 0;
     }
 }
 
 
-/* ================================
+/* =========================================
+   SOFT REFLECTION
+   ========================================= */
+
+@keyframes softReflection {
+
+    0% {
+
+        opacity: 0;
+
+        background-position:
+            135% 0;
+    }
+
+    20% {
+
+        opacity: 0.5;
+    }
+
+    50% {
+
+        opacity: 0.75;
+    }
+
+    80% {
+
+        opacity: 0.35;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        background-position:
+            -135% 0;
+    }
+}
+
+
+/* =========================================
    INTRO EXIT
-   ================================ */
+   ========================================= */
 
 @keyframes introOut {
 
     0% {
+
         opacity: 1;
+
         visibility: visible;
     }
 
     100% {
+
         opacity: 0;
+
         visibility: hidden;
+
         pointer-events: none;
     }
 }
 
 
-/* ================================
+/* =========================================
    MOBILE
-   ================================ */
+   ========================================= */
 
 @media (max-width: 600px) {
 
     .name {
-        font-size: clamp(
-            1.8rem,
-            9.5vw,
-            4rem
-        );
 
-        letter-spacing: 0.035em;
+        font-size:
+            clamp(
+                1.8rem,
+                9.5vw,
+                4rem
+            );
+
+        letter-spacing:
+            0.035em;
     }
 }
 
 </style>
+
 </head>
 
 
 <body>
+
 
 <div class="intro">
 
@@ -250,5 +447,7 @@ body {
 
 </div>
 
+
 </body>
+
 </html>
