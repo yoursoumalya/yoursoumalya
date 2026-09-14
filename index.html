@@ -1,72 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ѕσυмαℓуα мαn∂αℓ</title>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap"
-      rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================
-   RESET
-   ========================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+html,body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
 }
 
-
-/* =========================================
-   BACKGROUND
-   ========================================= */
-
-body {
-    background: #090909;
+body{
+    background:#090909;
+    font-family:"Noto Serif",serif;
 }
 
 
-/* =========================================
-   INTRO SCREEN
-   ========================================= */
+/* ================================
+   MAIN WEBSITE BACKGROUND
+================================ */
 
-.intro {
+.site{
+    position:relative;
+    min-height:100vh;
+    width:100%;
+    background-color:#090909;
 
-    position: fixed;
+    background-image:url("ddd.jpg");
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size:100% auto;
+}
 
-    inset: 0;
 
-    width: 100%;
-    height: 100vh;
+/* Mobile background */
 
-    display: flex;
+@media(max-width:600px){
 
-    align-items: center;
-    justify-content: center;
+    .site{
+        background-image:url("ggg.jpg");
+        background-size:100% auto;
+        background-position:center top;
+    }
+
+}
+
+
+/* ================================
+   TOP LEFT ARTIST NAME
+================================ */
+
+.site-name{
+    position:fixed;
+    top:28px;
+    left:32px;
+
+    z-index:100;
+
+    font-family:"Noto Serif",serif;
+    font-size:clamp(1.2rem,2.2vw,2rem);
+    font-weight:300;
+
+    letter-spacing:.045em;
+    color:#e7e7e7;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 1px 8px rgba(0,0,0,.45);
+}
+
+
+@media(max-width:600px){
+
+    .site-name{
+        top:20px;
+        left:20px;
+        font-size:1.15rem;
+    }
+
+}
+
+
+/* ================================
+   INTRO
+================================ */
+
+.intro{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
         radial-gradient(
@@ -77,367 +120,245 @@ body {
             #070707 100%
         );
 
-    z-index: 9999;
+    z-index:9999;
 
-    animation:
-        introOut 1s ease-in-out 4.35s forwards;
+    animation:introOut 1s ease-in-out 2s forwards;
 }
 
 
-/* =========================================
-   ARTIST NAME
-   ========================================= */
+.name{
+    position:relative;
+    display:inline-block;
 
-.name {
+    font-family:"Noto Serif",serif;
 
-    position: relative;
+    font-size:clamp(2.2rem,7vw,6.2rem);
 
-    display: inline-block;
+    font-weight:300;
+    letter-spacing:.045em;
 
-    font-family:
-        "Noto Serif",
-        serif;
+    color:#e7e7e7;
 
-    font-size:
-        clamp(2.2rem, 7vw, 6.2rem);
+    white-space:nowrap;
 
-    font-weight: 300;
-
-    letter-spacing: 0.045em;
-
-    color: #e7e7e7;
-
-    white-space: nowrap;
-
-    /*
-       Keeps the animation elegant
-       instead of looking oversized.
-    */
-
-    animation:
-        textAppear
-        1.45s
-        cubic-bezier(.22,1,.36,1)
-        forwards;
+    animation:textAppear .9s cubic-bezier(.22,1,.36,1) forwards;
 }
 
 
-/* =========================================
-   PREMIUM SHINE LAYER
-   ========================================= */
+/* Main cinematic shine */
 
-.name::after {
+.name::after{
+    content:"ѕσυмαℓуα мαn∂αℓ";
 
-    content: "ѕσυмαℓуα мαn∂αℓ";
+    position:absolute;
+    inset:0;
 
-    position: absolute;
+    pointer-events:none;
 
-    inset: 0;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
 
-    pointer-events: none;
-
-    /*
-       The text itself is transparent.
-       Only the gradient inside the glyphs
-       becomes visible.
-    */
-
-    color: transparent;
-
-    -webkit-text-fill-color: transparent;
-
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
     background-image:
-
         linear-gradient(
             105deg,
-
             transparent 0%,
-
             transparent 38%,
-
-            rgba(255,255,255,0.02) 42%,
-
-            rgba(255,255,255,0.20) 45%,
-
-            rgba(255,255,255,0.72) 48%,
-
-            rgba(255,255,255,1.00) 50%,
-
-            rgba(255,255,255,0.72) 52%,
-
-            rgba(255,255,255,0.20) 55%,
-
-            rgba(255,255,255,0.02) 58%,
-
+            rgba(255,255,255,.02) 42%,
+            rgba(255,255,255,.20) 45%,
+            rgba(255,255,255,.72) 48%,
+            rgba(255,255,255,1) 50%,
+            rgba(255,255,255,.72) 52%,
+            rgba(255,255,255,.20) 55%,
+            rgba(255,255,255,.02) 58%,
             transparent 62%,
-
             transparent 100%
         );
 
-    /*
-       A large gradient is necessary
-       for a smooth cinematic sweep.
-    */
+    background-size:260% 100%;
+    background-position:130% 0;
 
-    background-size: 260% 100%;
+    filter:drop-shadow(
+        0 0 7px rgba(255,255,255,.32)
+    );
 
-    background-position: 130% 0;
-
-    /*
-       Slight optical glow inside
-       the moving reflection.
-    */
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255,255,255,0.32)
-        );
-
-    opacity: 0;
+    opacity:0;
 
     animation:
-        premiumShine
-        2.15s
-        cubic-bezier(.35,0,.2,1)
-        1.15s
-        forwards;
+        premiumShine 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
 }
 
 
-/* =========================================
-   VERY SUBTLE SECOND REFLECTION
-   ========================================= */
+/* Soft reflection */
 
-.name::before {
+.name::before{
+    content:"ѕσυмαℓуα мαn∂αℓ";
 
-    content: "ѕσυмαℓуα мαn∂αℓ";
+    position:absolute;
+    inset:0;
 
-    position: absolute;
+    pointer-events:none;
 
-    inset: 0;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
 
-    pointer-events: none;
-
-    color: transparent;
-
-    -webkit-text-fill-color: transparent;
-
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
     background-image:
-
         linear-gradient(
             105deg,
             transparent 43%,
-            rgba(255,255,255,0.08) 47%,
-            rgba(255,255,255,0.25) 50%,
-            rgba(255,255,255,0.08) 53%,
+            rgba(255,255,255,.08) 47%,
+            rgba(255,255,255,.25) 50%,
+            rgba(255,255,255,.08) 53%,
             transparent 57%
         );
 
-    background-size: 250% 100%;
+    background-size:250% 100%;
+    background-position:130% 0;
 
-    background-position: 130% 0;
-
-    opacity: 0;
+    opacity:0;
 
     animation:
-        softReflection
-        2.15s
-        cubic-bezier(.35,0,.2,1)
-        1.15s
-        forwards;
+        softReflection 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
 }
 
 
-/* =========================================
-   TEXT APPEAR
-   ========================================= */
+/* ================================
+   INTRO ANIMATIONS
+================================ */
 
-@keyframes textAppear {
+@keyframes textAppear{
 
-    0% {
-
-        opacity: 0;
-
-        transform:
-            scale(0.94);
-
-        letter-spacing:
-            0.16em;
-
-        filter:
-            blur(8px);
+    0%{
+        opacity:0;
+        transform:scale(.94);
+        letter-spacing:.16em;
+        filter:blur(8px);
     }
 
-    55% {
-
-        opacity: 1;
-
-        filter:
-            blur(0);
+    55%{
+        opacity:1;
+        filter:blur(0);
     }
 
-    100% {
-
-        opacity: 1;
-
-        transform:
-            scale(1);
-
-        letter-spacing:
-            0.045em;
-
-        filter:
-            blur(0);
+    100%{
+        opacity:1;
+        transform:scale(1);
+        letter-spacing:.045em;
+        filter:blur(0);
     }
 }
 
 
-/* =========================================
-   MAIN CINEMATIC LIGHT
-   ========================================= */
+@keyframes premiumShine{
 
-@keyframes premiumShine {
-
-    0% {
-
-        opacity: 0;
-
-        background-position:
-            135% 0;
+    0%{
+        opacity:0;
+        background-position:135% 0;
     }
 
-    12% {
-
-        opacity: 0.9;
+    12%{
+        opacity:.9;
     }
 
-    25% {
-
-        opacity: 1;
+    25%{
+        opacity:1;
     }
 
-    50% {
-
-        opacity: 1;
+    50%{
+        opacity:1;
     }
 
-    72% {
-
-        opacity: 0.95;
+    72%{
+        opacity:.95;
     }
 
-    88% {
-
-        opacity: 0.35;
+    88%{
+        opacity:.35;
     }
 
-    100% {
-
-        opacity: 0;
-
-        background-position:
-            -135% 0;
+    100%{
+        opacity:0;
+        background-position:-135% 0;
     }
 }
 
 
-/* =========================================
-   SOFT REFLECTION
-   ========================================= */
+@keyframes softReflection{
 
-@keyframes softReflection {
-
-    0% {
-
-        opacity: 0;
-
-        background-position:
-            135% 0;
+    0%{
+        opacity:0;
+        background-position:135% 0;
     }
 
-    20% {
-
-        opacity: 0.5;
+    20%{
+        opacity:.5;
     }
 
-    50% {
-
-        opacity: 0.75;
+    50%{
+        opacity:.75;
     }
 
-    80% {
-
-        opacity: 0.35;
+    80%{
+        opacity:.35;
     }
 
-    100% {
-
-        opacity: 0;
-
-        background-position:
-            -135% 0;
+    100%{
+        opacity:0;
+        background-position:-135% 0;
     }
 }
 
 
-/* =========================================
-   INTRO EXIT
-   ========================================= */
+@keyframes introOut{
 
-@keyframes introOut {
-
-    0% {
-
-        opacity: 1;
-
-        visibility: visible;
+    0%{
+        opacity:1;
+        visibility:visible;
     }
 
-    100% {
-
-        opacity: 0;
-
-        visibility: hidden;
-
-        pointer-events: none;
+    100%{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
     }
 }
 
 
-/* =========================================
-   MOBILE
-   ========================================= */
+/* Mobile intro */
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    .name {
-
-        font-size:
-            clamp(
-                1.8rem,
-                9.5vw,
-                4rem
-            );
-
-        letter-spacing:
-            0.035em;
+    .name{
+        font-size:clamp(1.8rem,9.5vw,4rem);
+        letter-spacing:.035em;
     }
+
 }
 
 </style>
-
 </head>
 
 
 <body>
 
+<!-- Main Website -->
+
+<div class="site">
+
+    <!-- Artist Name -->
+    <div class="site-name">
+        ѕσυмαℓуα мαn∂αℓ
+    </div>
+
+</div>
+
+
+<!-- Intro -->
 
 <div class="intro">
 
@@ -447,7 +368,5 @@ body {
 
 </div>
 
-
 </body>
-
 </html>
