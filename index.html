@@ -1,844 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ѕσυмαℓуα мαn∂αℓ</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-    overflow-x:hidden;
-}
-
-body{
-    background:#090909;
-    font-family:"Noto Serif",serif;
-}
-
-
-/* =================================
-   MOBILE FIXED BACKGROUND
-================================= */
-
-.mobile-background{
-    display:none;
-}
-
-@media(max-width:600px){
-
-    .mobile-background{
-        display:block;
-
-        position:fixed;
-        inset:0;
-
-        width:100vw;
-        height:100vh;
-
-        z-index:0;
-
-        background:#090909;
-
-        pointer-events:none;
-    }
-
-    .mobile-background img{
-        width:100%;
-        height:100%;
-
-        object-fit:contain;
-        object-position:center top;
-
-        display:block;
-    }
-
-}
-
-
-/* =================================
-   MOBILE SCROLL AREA
-================================= */
-
-.mobile-page{
-    display:none;
-}
-
-@media(max-width:600px){
-
-    .mobile-page{
-        display:block;
-
-        position:relative;
-
-        width:100%;
-
-        height:2100px;
-
-        z-index:10;
-    }
-
-}
-
-
-/* =================================
-   TOP LEFT ARTIST NAME
-================================= */
-
-.site-name{
-    position:fixed;
-
-    top:28px;
-    left:32px;
-
-    z-index:100;
-
-    font-family:"Noto Serif",serif;
-
-    font-size:clamp(1.2rem,2.2vw,2rem);
-
-    font-weight:300;
-
-    letter-spacing:.045em;
-
-    color:#e7e7e7;
-
-    white-space:nowrap;
-
-    text-shadow:
-        0 1px 8px rgba(0,0,0,.45);
-}
-
-
-@media(max-width:600px){
-
-    .site-name{
-        top:20px;
-        left:20px;
-
-        font-size:1.15rem;
-    }
-
-}
-
-
-/* =================================
-   MOBILE ABOUT
-================================= */
-
-.mobile-about{
-
-    display:none;
-}
-
-@media(max-width:600px){
-
-    .mobile-about{
-
-        display:block;
-
-        position:fixed;
-
-        top:18%;
-        right:7%;
-
-        width:54%;
-
-        z-index:80;
-
-        opacity:0;
-        visibility:hidden;
-
-        transition:
-            opacity .55s ease,
-            visibility .55s ease;
-    }
-
-
-    .mobile-about.show{
-
-        opacity:1;
-        visibility:visible;
-    }
-
-
-    /* About heading */
-
-    .about-heading{
-
-        font-family:"Noto Serif",serif;
-
-        font-size:clamp(
-            .9rem,
-            4vw,
-            1.35rem
-        );
-
-        font-weight:400;
-
-        line-height:1.15;
-
-        letter-spacing:.035em;
-
-        color:#e7e7e7;
-
-        margin-bottom:18px;
-
-        white-space:pre-line;
-    }
-
-
-    /* Passage area */
-
-    .about-passage{
-
-        position:relative;
-
-        width:100%;
-
-        font-family:"Noto Serif",serif;
-
-        font-size:clamp(
-            .68rem,
-            3vw,
-            1rem
-        );
-
-        line-height:1.65;
-
-        font-weight:300;
-
-        color:#e7e7e7;
-
-        letter-spacing:.015em;
-    }
-
-
-    .passage{
-
-        position:absolute;
-
-        top:0;
-        left:0;
-
-        width:100%;
-
-        opacity:0;
-
-        transform:translateY(12px);
-
-        transition:
-            opacity .5s ease,
-            transform .5s ease;
-    }
-
-
-    .passage.active{
-
-        opacity:1;
-
-        transform:translateY(0);
-    }
-
-
-    /* Passage starts hidden after heading */
-
-    .mobile-about.passage-mode .about-heading{
-        opacity:1;
-    }
-
-}
-
-
-/* =================================
-   DESKTOP HERO IMAGE
-================================= */
-
-.desktop-page{
-    display:block;
-
-    width:100%;
-
-    background:#090909;
-}
-
-
-.desktop-hero{
-
-    width:100%;
-
-    background:#090909;
-
-    line-height:0;
-}
-
-
-.desktop-hero img{
-
-    display:block;
-
-    width:100%;
-    height:auto;
-
-    object-fit:contain;
-}
-
-
-/* =================================
-   DESKTOP ABOUT
-================================= */
-
-.desktop-about{
-
-    display:block;
-
-    width:100%;
-
-    background:#090909;
-
-    padding:90px 8vw;
-}
-
-
-.desktop-about-box{
-
-    max-width:1050px;
-
-    margin:0 auto;
-
-    padding:48px 55px;
-
-    background:rgba(255,255,255,.075);
-
-    border:1px solid rgba(255,255,255,.18);
-
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-
-    border-radius:18px;
-
-    color:#e7e7e7;
-}
-
-
-.desktop-about-heading{
-
-    font-family:"Noto Serif",serif;
-
-    font-size:clamp(
-        1.2rem,
-        2.2vw,
-        2rem
-    );
-
-    font-weight:400;
-
-    letter-spacing:.035em;
-
-    margin-bottom:25px;
-}
-
-
-.desktop-about-text{
-
-    font-family:"Noto Serif",serif;
-
-    font-size:clamp(
-        .9rem,
-        1.3vw,
-        1.15rem
-    );
-
-    font-weight:300;
-
-    line-height:1.8;
-
-    letter-spacing:.012em;
-
-    color:#dedede;
-}
-
-
-.desktop-about-text p{
-
-    margin-bottom:25px;
-}
-
-
-.desktop-about-text p:last-child{
-
-    margin-bottom:0;
-}
-
-
-/* =================================
-   MOBILE / DESKTOP SWITCH
-================================= */
-
-@media(max-width:600px){
-
-    .desktop-page{
-        display:none;
-    }
-
-}
-
-
-/* =================================
-   INTRO
-================================= */
-
-.intro{
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100vh;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            #171717 0%,
-            #101010 42%,
-            #090909 78%,
-            #070707 100%
-        );
-
-    z-index:9999;
-
-    animation:introOut 1s ease-in-out 2s forwards;
-}
-
-
-.name{
-
-    position:relative;
-
-    display:inline-block;
-
-    font-family:"Noto Serif",serif;
-
-    font-size:clamp(
-        2.2rem,
-        7vw,
-        6.2rem
-    );
-
-    font-weight:300;
-
-    letter-spacing:.045em;
-
-    color:#e7e7e7;
-
-    white-space:nowrap;
-
-    animation:
-        textAppear .9s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-
-/* Main cinematic shine */
-
-.name::after{
-
-    content:"ѕσυмαℓуα мαn∂αℓ";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    color:transparent;
-
-    -webkit-text-fill-color:transparent;
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    background-image:
-        linear-gradient(
-            105deg,
-            transparent 0%,
-            transparent 38%,
-            rgba(255,255,255,.02) 42%,
-            rgba(255,255,255,.20) 45%,
-            rgba(255,255,255,.72) 48%,
-            rgba(255,255,255,1) 50%,
-            rgba(255,255,255,.72) 52%,
-            rgba(255,255,255,.20) 55%,
-            rgba(255,255,255,.02) 58%,
-            transparent 62%,
-            transparent 100%
-        );
-
-    background-size:260% 100%;
-
-    background-position:130% 0;
-
-    filter:
-        drop-shadow(
-            0 0 7px rgba(255,255,255,.32)
-        );
-
-    opacity:0;
-
-    animation:
-        premiumShine
-        1.2s
-        cubic-bezier(.35,0,.2,1)
-        .7s
-        forwards;
-}
-
-
-/* Soft reflection */
-
-.name::before{
-
-    content:"ѕσυмαℓуα мαn∂αℓ";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    color:transparent;
-
-    -webkit-text-fill-color:transparent;
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    background-image:
-        linear-gradient(
-            105deg,
-            transparent 43%,
-            rgba(255,255,255,.08) 47%,
-            rgba(255,255,255,.25) 50%,
-            rgba(255,255,255,.08) 53%,
-            transparent 57%
-        );
-
-    background-size:250% 100%;
-
-    background-position:130% 0;
-
-    opacity:0;
-
-    animation:
-        softReflection
-        1.2s
-        cubic-bezier(.35,0,.2,1)
-        .7s
-        forwards;
-}
-
-
-/* =================================
-   INTRO ANIMATIONS
-================================= */
-
-@keyframes textAppear{
-
-    0%{
-        opacity:0;
-        transform:scale(.94);
-        letter-spacing:.16em;
-        filter:blur(8px);
-    }
-
-    55%{
-        opacity:1;
-        filter:blur(0);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-        letter-spacing:.045em;
-        filter:blur(0);
-    }
-}
-
-
-@keyframes premiumShine{
-
-    0%{
-        opacity:0;
-        background-position:135% 0;
-    }
-
-    12%{
-        opacity:.9;
-    }
-
-    25%{
-        opacity:1;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    72%{
-        opacity:.95;
-    }
-
-    88%{
-        opacity:.35;
-    }
-
-    100%{
-        opacity:0;
-        background-position:-135% 0;
-    }
-}
-
-
-@keyframes softReflection{
-
-    0%{
-        opacity:0;
-        background-position:135% 0;
-    }
-
-    20%{
-        opacity:.5;
-    }
-
-    50%{
-        opacity:.75;
-    }
-
-    80%{
-        opacity:.35;
-    }
-
-    100%{
-        opacity:0;
-        background-position:-135% 0;
-    }
-}
-
-
-@keyframes introOut{
-
-    0%{
-        opacity:1;
-        visibility:visible;
-    }
-
-    100%{
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-    }
-}
-
-
-/* Mobile intro */
-
-@media(max-width:600px){
-
-    .name{
-
-        font-size:clamp(
-            1.8rem,
-            9.5vw,
-            4rem
-        );
-
-        letter-spacing:.035em;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =================================
-     MOBILE FIXED IMAGE
-================================= -->
-
-<div class="mobile-background">
-
-    <img src="ggg.jpg" alt="Soumalya">
-
-</div>
-
-
-<!-- =================================
-     MOBILE CONTENT
-================================= -->
-
-<div class="mobile-page">
-
-    <div class="mobile-about" id="mobileAbout">
-
-        <div class="about-heading">
-Ａｂｏｕｔ
-Ｓｏｕｍａｌｙａ
-        </div>
-
-
-        <div class="about-passage">
-
-
-            <div class="passage" id="passage1">
-
-                𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
-
-            </div>
-
-
-            <div class="passage" id="passage2">
-
-                𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
-
-            </div>
-
-
-            <div class="passage" id="passage3">
-
-                𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
-
-            </div>
-
-
-            <div class="passage" id="passage4">
-
-                𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =================================
-     DESKTOP PAGE
-================================= -->
-
-<div class="desktop-page">
-
-
-    <div class="desktop-hero">
-
-        <img src="ddd.jpg" alt="Soumalya">
-
-    </div>
-
-
-    <section class="desktop-about">
-
-        <div class="desktop-about-box">
-
-
-            <div class="desktop-about-heading">
-
-                Ａｂｏｕｔ Ｓｏｕｍａｌｙａ
-
-            </div>
-
-
-            <div class="desktop-about-text">
-
-
-                <p>
-
-                    𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
-
-                </p>
-
-
-                <p>
-
-                    𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
-
-                </p>
-
-
-                <p>
-
-                    𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
-
-                </p>
-
-
-                <p>
-
-                    𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
-
-                </p>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<!-- =================================
-     ARTIST NAME
-================================= -->
-
-<div class="site-name">
-
-    ѕσυмαℓуα мαn∂αℓ
-
-</div>
-
-
-<!-- =================================
-     INTRO
-================================= -->
-
-<div class="intro">
-
-    <div class="name">
-
-        ѕσυмαℓуα мαn∂αℓ
-
-    </div>
-
-</div>
-
-
 <script>
 
 /* =================================
@@ -861,22 +20,66 @@ const passages = [
 ];
 
 
-function updateMobileAbout(){
+let shownStage = -1;
+let targetStage = -1;
+let stageChanging = false;
 
-    if(window.innerWidth > 600){
-        return;
-    }
 
+function getTargetStage(){
 
     const scrollY = window.scrollY;
 
 
-    /*
-       Before scrolling:
-       Everything remains invisible.
-    */
-
     if(scrollY < 80){
+
+        return -1;
+
+    }
+
+
+    if(scrollY < 300){
+
+        return 0;
+
+    }
+
+
+    if(scrollY < 700){
+
+        return 1;
+
+    }
+
+
+    if(scrollY < 1100){
+
+        return 2;
+
+    }
+
+
+    if(scrollY < 1500){
+
+        return 3;
+
+    }
+
+
+    return 4;
+
+}
+
+
+function showStage(stage){
+
+    if(window.innerWidth > 600){
+
+        return;
+
+    }
+
+
+    if(stage === -1){
 
         mobileAbout.classList.remove("show");
 
@@ -887,70 +90,22 @@ function updateMobileAbout(){
         });
 
         return;
+
     }
 
-
-    /*
-       Heading appears first.
-    */
 
     mobileAbout.classList.add("show");
 
 
-    let currentPassage = -1;
+    if(stage === 0){
 
+        passages.forEach(passage => {
 
-    /*
-       About heading stage
-    */
+            passage.classList.remove("active");
 
-    if(scrollY >= 80 && scrollY < 300){
+        });
 
-        currentPassage = -1;
-
-    }
-
-
-    /*
-       Passage 1
-    */
-
-    if(scrollY >= 300){
-
-        currentPassage = 0;
-
-    }
-
-
-    /*
-       Passage 2
-    */
-
-    if(scrollY >= 700){
-
-        currentPassage = 1;
-
-    }
-
-
-    /*
-       Passage 3
-    */
-
-    if(scrollY >= 1100){
-
-        currentPassage = 2;
-
-    }
-
-
-    /*
-       Passage 4
-    */
-
-    if(scrollY >= 1500){
-
-        currentPassage = 3;
+        return;
 
     }
 
@@ -958,8 +113,11 @@ function updateMobileAbout(){
     passages.forEach((passage,index) => {
 
         passage.classList.toggle(
+
             "active",
-            index === currentPassage
+
+            index === stage - 1
+
         );
 
     });
@@ -967,23 +125,92 @@ function updateMobileAbout(){
 }
 
 
+function processStage(){
+
+    if(stageChanging){
+
+        return;
+
+    }
+
+
+    if(shownStage === targetStage){
+
+        return;
+
+    }
+
+
+    stageChanging = true;
+
+
+    if(targetStage > shownStage){
+
+        shownStage++;
+
+    }
+    else{
+
+        shownStage--;
+
+    }
+
+
+    showStage(shownStage);
+
+
+    setTimeout(() => {
+
+        stageChanging = false;
+
+
+        if(shownStage !== targetStage){
+
+            processStage();
+
+        }
+
+    },1050);
+
+}
+
+
+function updateMobileAbout(){
+
+    if(window.innerWidth > 600){
+
+        return;
+
+    }
+
+
+    targetStage = getTargetStage();
+
+    processStage();
+
+}
+
+
 window.addEventListener(
+
     "scroll",
+
     updateMobileAbout,
+
     {passive:true}
+
 );
 
 
 window.addEventListener(
+
     "resize",
+
     updateMobileAbout
+
 );
 
 
-updateMobileAbout();
+showStage(-1);
 
 </script>
-
-
-</body>
-</html>
