@@ -86,7 +86,7 @@ body{
 
         width:100%;
 
-        height:1900px;
+        height:2100px;
 
         z-index:10;
     }
@@ -152,7 +152,7 @@ body{
 
         position:fixed;
 
-        top:25%;
+        top:18%;
         right:7%;
 
         width:54%;
@@ -175,6 +175,8 @@ body{
     }
 
 
+    /* About heading */
+
     .about-heading{
 
         font-family:"Noto Serif",serif;
@@ -187,13 +189,19 @@ body{
 
         font-weight:400;
 
+        line-height:1.15;
+
         letter-spacing:.035em;
 
         color:#e7e7e7;
 
-        margin-bottom:12px;
+        margin-bottom:18px;
+
+        white-space:pre-line;
     }
 
+
+    /* Passage area */
 
     .about-passage{
 
@@ -243,6 +251,13 @@ body{
         opacity:1;
 
         transform:translateY(0);
+    }
+
+
+    /* Passage starts hidden after heading */
+
+    .mobile-about.passage-mode .about-heading{
+        opacity:1;
     }
 
 }
@@ -689,8 +704,10 @@ body{
     <div class="mobile-about" id="mobileAbout">
 
         <div class="about-heading">
-            Ａｂｏｕｔ Ｓｏｕｍａｌｙａ
+Ａｂｏｕｔ
+Ｓｏｕｍａｌｙａ
         </div>
+
 
         <div class="about-passage">
 
@@ -737,16 +754,12 @@ body{
 <div class="desktop-page">
 
 
-    <!-- 16:9 IMAGE ONLY -->
-
     <div class="desktop-hero">
 
         <img src="ddd.jpg" alt="Soumalya">
 
     </div>
 
-
-    <!-- BLACK AREA BELOW IMAGE -->
 
     <section class="desktop-about">
 
@@ -878,31 +891,64 @@ function updateMobileAbout(){
 
 
     /*
-       After first scroll:
-       About + first passage.
+       Heading appears first.
     */
 
     mobileAbout.classList.add("show");
 
 
-    let currentPassage = 0;
+    let currentPassage = -1;
 
 
-    if(scrollY >= 420){
+    /*
+       About heading stage
+    */
+
+    if(scrollY >= 80 && scrollY < 300){
+
+        currentPassage = -1;
+
+    }
+
+
+    /*
+       Passage 1
+    */
+
+    if(scrollY >= 300){
+
+        currentPassage = 0;
+
+    }
+
+
+    /*
+       Passage 2
+    */
+
+    if(scrollY >= 700){
 
         currentPassage = 1;
 
     }
 
 
-    if(scrollY >= 800){
+    /*
+       Passage 3
+    */
+
+    if(scrollY >= 1100){
 
         currentPassage = 2;
 
     }
 
 
-    if(scrollY >= 1180){
+    /*
+       Passage 4
+    */
+
+    if(scrollY >= 1500){
 
         currentPassage = 3;
 
