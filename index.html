@@ -18,17 +18,17 @@
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
     background:#000;
-    font-family:"Noto Serif",serif;
 }
 
 
-/* =========================
+/* =================================
    INTRO
-========================= */
+================================= */
 
 .intro{
     position:fixed;
@@ -67,19 +67,14 @@ html,body{
 
     white-space:nowrap;
 
-    animation:
-        textAppear .9s cubic-bezier(.22,1,.36,1) forwards;
+    animation:textAppear .9s cubic-bezier(.22,1,.36,1) forwards;
 }
-
-
-/* Cinematic shine */
 
 .name::after{
     content:"ѕσυмαℓуα мαn∂αℓ";
 
     position:absolute;
     inset:0;
-    pointer-events:none;
 
     color:transparent;
     -webkit-text-fill-color:transparent;
@@ -110,19 +105,14 @@ html,body{
 
     opacity:0;
 
-    animation:
-        premiumShine 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
+    animation:premiumShine 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
 }
-
-
-/* Soft reflection */
 
 .name::before{
     content:"ѕσυмαℓуα мαn∂αℓ";
 
     position:absolute;
     inset:0;
-    pointer-events:none;
 
     color:transparent;
     -webkit-text-fill-color:transparent;
@@ -145,13 +135,10 @@ html,body{
 
     opacity:0;
 
-    animation:
-        softReflection 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
+    animation:softReflection 1.2s cubic-bezier(.35,0,.2,1) .7s forwards;
 }
 
-
 @keyframes textAppear{
-
     0%{
         opacity:0;
         transform:scale(.94);
@@ -172,59 +159,33 @@ html,body{
     }
 }
 
-
 @keyframes premiumShine{
-
     0%{
         opacity:0;
         background-position:135% 0;
     }
 
-    12%{
-        opacity:.9;
-    }
-
-    25%{
-        opacity:1;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    72%{
-        opacity:.95;
-    }
-
-    88%{
-        opacity:.35;
-    }
+    12%{opacity:.9;}
+    25%{opacity:1;}
+    50%{opacity:1;}
+    72%{opacity:.95;}
+    88%{opacity:.35;}
 
     100%{
         opacity:0;
         background-position:-135% 0;
     }
 }
-
 
 @keyframes softReflection{
-
     0%{
         opacity:0;
         background-position:135% 0;
     }
 
-    20%{
-        opacity:.5;
-    }
-
-    50%{
-        opacity:.75;
-    }
-
-    80%{
-        opacity:.35;
-    }
+    20%{opacity:.5;}
+    50%{opacity:.75;}
+    80%{opacity:.35;}
 
     100%{
         opacity:0;
@@ -232,9 +193,7 @@ html,body{
     }
 }
 
-
 @keyframes introOut{
-
     0%{
         opacity:1;
         visibility:visible;
@@ -248,28 +207,17 @@ html,body{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
-
-.mobile-site{
-    display:none;
-}
-
+/* =================================
+   MOBILE / ANDROID
+================================= */
 
 @media(max-width:600px){
 
-    .desktop-site{
-        display:none;
+    body{
+        overflow-x:hidden;
     }
 
-    .mobile-site{
-        display:block;
-        position:relative;
-    }
-
-
-    /* Fixed background */
+    /* FIXED IMAGE */
 
     .mobile-background{
         position:fixed;
@@ -278,64 +226,69 @@ html,body{
         width:100%;
         height:100vh;
 
-        z-index:0;
         background:#000;
+
+        z-index:0;
     }
 
     .mobile-background img{
+        display:block;
+
         width:100%;
         height:100%;
 
         object-fit:contain;
         object-position:center top;
-
-        display:block;
     }
 
 
-    /* Scroll space */
+    /* SCROLL SPACE */
 
     .mobile-page{
         position:relative;
 
-        height:2100px;
+        height:2500px;
 
         z-index:1;
     }
 
 
-    /* Artist name */
+    /* =================================
+       TOP LEFT ARTIST NAME
+    ================================= */
 
     .site-name{
         position:fixed;
 
         top:24px;
-        left:50%;
-
-        transform:translateX(-50%);
+        left:24px;
 
         z-index:5;
 
         color:#fff;
 
         font-family:"Noto Serif",serif;
-        font-size:14px;
+
+        font-size:18px;
         font-weight:300;
 
-        letter-spacing:.05em;
+        letter-spacing:.045em;
 
         white-space:nowrap;
 
-        opacity:.9;
+        opacity:.95;
     }
 
 
-    /* About container */
+    /* =================================
+       ABOUT
+    ================================= */
 
     .mobile-about{
+
         position:fixed;
 
-        top:16%;
+        top:15%;
         right:7%;
 
         width:54%;
@@ -348,9 +301,9 @@ html,body{
     }
 
 
-    /* =========================
-       ABOUT HEADING
-    ========================= */
+    /* =================================
+       HEADING
+    ================================= */
 
     .mobile-heading{
 
@@ -363,28 +316,27 @@ html,body{
 
         font-family:"Noto Serif",serif;
 
-        font-size:clamp(1.25rem,6vw,2rem);
+        font-size:clamp(1.2rem,5.8vw,1.9rem);
 
         font-weight:400;
 
-        line-height:1.35;
+        line-height:1.4;
 
         letter-spacing:.02em;
 
         opacity:0;
 
-        transform:translateY(22px);
+        transform:translateY(25px);
 
         transition:
-            opacity .65s ease,
-            transform .65s cubic-bezier(.22,1,.36,1);
-
+            opacity 1.15s ease,
+            transform 1.15s cubic-bezier(.22,1,.36,1);
     }
 
 
-    /* =========================
+    /* =================================
        PASSAGES
-    ========================= */
+    ================================= */
 
     .mobile-passage{
 
@@ -397,132 +349,58 @@ html,body{
 
         font-family:"Noto Serif",serif;
 
-        font-size:clamp(.72rem,3.2vw,.95rem);
+        font-size:clamp(.70rem,3.15vw,.94rem);
 
         font-weight:300;
 
-        line-height:1.75;
+        line-height:1.72;
 
         letter-spacing:.01em;
 
         opacity:0;
 
-        transform:translateY(28px);
+        transform:translateY(34px);
 
         transition:
-            opacity .7s ease,
-            transform .75s cubic-bezier(.22,1,.36,1);
-
+            opacity 1.2s ease,
+            transform 1.2s cubic-bezier(.22,1,.36,1);
     }
 
 
-    /* Passage 1 */
+    /* Exact italic styling */
 
-    .mobile-passage.one{
-        font-family:"Noto Serif",serif;
-    }
-
-
-    /* Passage 2 */
-
-    .mobile-passage.two{
-        font-family:"Noto Serif",serif;
-    }
-
-
-    /* Passage 3 — exact font */
-
-    .mobile-passage.three{
-
-        font-family:"Noto Serif",serif;
-
-        font-style:italic;
-    }
-
-
-    /* Passage 4 — exact font */
-
+    .mobile-passage.three,
     .mobile-passage.four{
-
         font-family:"Noto Serif",serif;
-
         font-style:italic;
     }
 
 
-    /* Heading visible */
+    /* =================================
+       HEADING ACTIVE
+    ================================= */
 
-    .mobile-about.heading-active .mobile-heading{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-
-    /* Passage visible */
-
-    .mobile-about.passage-one .mobile-passage.one,
-    .mobile-about.passage-two .mobile-passage.two,
-    .mobile-about.passage-three .mobile-passage.three,
-    .mobile-about.passage-four .mobile-passage.four{
+    .mobile-about.heading-active
+    .mobile-heading{
 
         opacity:1;
 
         transform:translateY(0);
+
+        animation:
+            headingReveal 1.25s cubic-bezier(.22,1,.36,1);
     }
 
 
-    /* When passage changes:
-       old text disappears smoothly */
-
-    .mobile-about.passage-one .mobile-heading,
-    .mobile-about.passage-two .mobile-heading,
-    .mobile-about.passage-three .mobile-heading,
-    .mobile-about.passage-four .mobile-heading{
-
-        opacity:0;
-        transform:translateY(-12px);
-    }
-
-
-    /* First passage */
-
-    .mobile-about.passage-one .mobile-passage.one{
-        animation:passageIn .75s cubic-bezier(.22,1,.36,1);
-    }
-
-
-    /* Second passage */
-
-    .mobile-about.passage-two .mobile-passage.two{
-        animation:passageIn .75s cubic-bezier(.22,1,.36,1);
-    }
-
-
-    /* Third passage */
-
-    .mobile-about.passage-three .mobile-passage.three{
-        animation:passageIn .75s cubic-bezier(.22,1,.36,1);
-    }
-
-
-    /* Fourth passage */
-
-    .mobile-about.passage-four .mobile-passage.four{
-        animation:passageIn .75s cubic-bezier(.22,1,.36,1);
-    }
-
-
-    /* Bottom → Top */
-
-    @keyframes passageIn{
+    @keyframes headingReveal{
 
         0%{
             opacity:0;
-            transform:translateY(32px);
-            filter:blur(3px);
+            transform:translateY(35px);
+            filter:blur(4px);
         }
 
-        45%{
+        60%{
             opacity:.65;
             filter:blur(1px);
         }
@@ -535,43 +413,117 @@ html,body{
     }
 
 
-    /* Mobile responsive */
+    /* =================================
+       PASSAGE ANIMATION
+    ================================= */
+
+    .mobile-about.passage-one
+    .mobile-passage.one,
+
+    .mobile-about.passage-two
+    .mobile-passage.two,
+
+    .mobile-about.passage-three
+    .mobile-passage.three,
+
+    .mobile-about.passage-four
+    .mobile-passage.four{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+        animation:
+            passageReveal 1.35s cubic-bezier(.22,1,.36,1);
+    }
+
+
+    @keyframes passageReveal{
+
+        0%{
+            opacity:0;
+            transform:translateY(38px);
+            filter:blur(4px);
+        }
+
+        35%{
+            opacity:.25;
+            filter:blur(2.5px);
+        }
+
+        65%{
+            opacity:.7;
+            filter:blur(1px);
+        }
+
+        100%{
+            opacity:1;
+            transform:translateY(0);
+            filter:blur(0);
+        }
+    }
+
+
+    /* Heading disappears before passages */
+
+    .mobile-about.passage-one .mobile-heading,
+    .mobile-about.passage-two .mobile-heading,
+    .mobile-about.passage-three .mobile-heading,
+    .mobile-about.passage-four .mobile-heading{
+
+        opacity:0;
+
+        transform:translateY(-15px);
+    }
+
+
+    /* =================================
+       SMALL PHONES
+    ================================= */
 
     @media(max-width:380px){
 
+        .site-name{
+            left:20px;
+            top:22px;
+
+            font-size:17px;
+        }
+
         .mobile-about{
-            top:15%;
+            top:14%;
             right:6%;
             width:57%;
         }
 
         .mobile-passage{
-            font-size:.68rem;
-            line-height:1.7;
+            font-size:.67rem;
+            line-height:1.68;
         }
 
         .mobile-heading{
-            font-size:1.15rem;
+            font-size:1.1rem;
         }
     }
 
 }
 
 
-/* =========================
+/* =================================
    DESKTOP
-========================= */
+================================= */
 
 @media(min-width:601px){
+
+    .mobile-site{
+        display:none;
+    }
 
     .desktop-site{
         display:block;
         background:#000;
         min-height:100vh;
     }
-
-
-    /* Full natural 16:9 image */
 
     .desktop-hero{
         width:100%;
@@ -587,9 +539,6 @@ html,body{
         object-fit:contain;
     }
 
-
-    /* Black About section */
-
     .desktop-about{
         background:#000;
 
@@ -601,9 +550,6 @@ html,body{
         align-items:flex-start;
         justify-content:center;
     }
-
-
-    /* About box */
 
     .desktop-about-box{
 
@@ -624,13 +570,7 @@ html,body{
 
         backdrop-filter:blur(18px);
         -webkit-backdrop-filter:blur(18px);
-
-        box-shadow:
-            0 0 45px rgba(255,255,255,.035);
     }
-
-
-    /* Desktop heading */
 
     .desktop-about h1{
 
@@ -647,9 +587,6 @@ html,body{
         margin-bottom:45px;
     }
 
-
-    /* Desktop passages */
-
     .desktop-about p{
 
         color:#e8e8e8;
@@ -665,28 +602,10 @@ html,body{
         margin-bottom:32px;
     }
 
-
     .desktop-about p:nth-of-type(3),
     .desktop-about p:nth-of-type(4){
 
         font-style:italic;
-    }
-
-}
-
-
-/* =========================
-   DESKTOP SMALL
-========================= */
-
-@media(min-width:601px) and (max-width:900px){
-
-    .desktop-about{
-        padding:70px 5% 90px;
-    }
-
-    .desktop-about-box{
-        padding:40px;
     }
 
 }
@@ -698,9 +617,9 @@ html,body{
 <body>
 
 
-<!-- =========================
+<!-- =================================
      INTRO
-========================= -->
+================================= -->
 
 <div class="intro">
 
@@ -712,50 +631,54 @@ html,body{
 
 
 
-<!-- =========================
-     MOBILE SITE
-========================= -->
+<!-- =================================
+     MOBILE
+================================= -->
 
 <div class="mobile-site">
 
 
-    <!-- Fixed background -->
-
     <div class="mobile-background">
 
-        <img src="ggg.jpg" alt="Soumalya Mandal">
+        <img
+            src="ggg.jpg"
+            alt="Soumalya Mandal"
+        >
 
     </div>
 
 
-    <!-- Artist name -->
+    <!-- TOP LEFT -->
 
     <div class="site-name">
         ѕσυмαℓуα мαn∂αℓ
     </div>
 
 
-    <!-- Scroll area -->
+    <!-- SCROLL AREA -->
 
     <div class="mobile-page"></div>
 
 
-    <!-- About content -->
+    <!-- ABOUT -->
 
-    <div class="mobile-about" id="mobileAbout">
+    <div
+        class="mobile-about"
+        id="mobileAbout"
+    >
 
 
-        <!-- Heading -->
+        <!-- HEADING ONLY -->
 
         <div class="mobile-heading">
 
             Ａｂｏｕｔ<br>
-            Ｓｏｕｍａｌｙａ
+            　Ｓｏｕｍａｌｙａ
 
         </div>
 
 
-        <!-- Passage 1 -->
+        <!-- PASSAGE 1 -->
 
         <div class="mobile-passage one">
 
@@ -764,7 +687,7 @@ html,body{
         </div>
 
 
-        <!-- Passage 2 -->
+        <!-- PASSAGE 2 -->
 
         <div class="mobile-passage two">
 
@@ -773,7 +696,7 @@ html,body{
         </div>
 
 
-        <!-- Passage 3 -->
+        <!-- PASSAGE 3 -->
 
         <div class="mobile-passage three">
 
@@ -782,11 +705,20 @@ html,body{
         </div>
 
 
-        <!-- Passage 4 -->
+        <!-- AND -->
+
+        <div class="mobile-passage and">
+
+            ᴀɴᴅ
+
+        </div>
+
+
+        <!-- PASSAGE 4 -->
 
         <div class="mobile-passage four">
 
-            𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+            　𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
 
         </div>
 
@@ -797,23 +729,21 @@ html,body{
 
 
 
-<!-- =========================
-     DESKTOP SITE
-========================= -->
+<!-- =================================
+     DESKTOP
+================================= -->
 
 <div class="desktop-site">
 
-
-    <!-- Full 16:9 image -->
-
     <div class="desktop-hero">
 
-        <img src="ddd.jpg" alt="Soumalya Mandal">
+        <img
+            src="ddd.jpg"
+            alt="Soumalya Mandal"
+        >
 
     </div>
 
-
-    <!-- Black About section -->
 
     <section class="desktop-about">
 
@@ -823,26 +753,25 @@ html,body{
                 Ａｂｏｕｔ Ｓｏｕｍａｌｙａ
             </h1>
 
-
             <p>
                 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
             </p>
 
-
             <p>
-                𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝘩𝘦𝘳𝘦 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
+                𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
             </p>
-
 
             <p>
                 𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
             </p>
 
-
             <p>
-                𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+                ᴀɴᴅ
             </p>
 
+            <p>
+                　𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+            </p>
 
         </div>
 
@@ -854,43 +783,82 @@ html,body{
 
 <script>
 
-/* =========================
-   MOBILE SCROLL CONTROL
-========================= */
+/* =================================
+   MOBILE SCROLL
+================================= */
 
 const mobileAbout =
     document.getElementById("mobileAbout");
 
 
+let currentStage = -1;
+
+
+/*
+   Determine which section
+   should be displayed.
+*/
+
+function getStage(scroll){
+
+    if(scroll < 80){
+        return -1;
+    }
+
+    if(scroll < 300){
+        return 0;
+    }
+
+    if(scroll < 800){
+        return 1;
+    }
+
+    if(scroll < 1250){
+        return 2;
+    }
+
+    if(scroll < 1650){
+        return 3;
+    }
+
+    return 4;
+}
+
+
+/*
+   Apply only when stage changes.
+   This prevents fast scrolling from
+   repeatedly resetting the animation.
+*/
+
 function updateMobileSection(){
 
     const scroll =
-        window.scrollY || window.pageYOffset;
+        window.scrollY ||
+        window.pageYOffset;
+
+    const stage =
+        getStage(scroll);
 
 
-    /* Reset everything */
+    if(stage === currentStage){
+        return;
+    }
+
+
+    currentStage = stage;
+
 
     mobileAbout.className =
         "mobile-about";
 
 
-    /*
-       0 - 79
-       Nothing visible
-    */
-
-    if(scroll < 80){
-
+    if(stage === -1){
         return;
     }
 
 
-    /*
-       80 - 299
-       Heading ONLY
-    */
-
-    if(scroll < 300){
+    if(stage === 0){
 
         mobileAbout.classList.add(
             "heading-active"
@@ -900,12 +868,7 @@ function updateMobileSection(){
     }
 
 
-    /*
-       300 - 699
-       Passage 1
-    */
-
-    if(scroll < 700){
+    if(stage === 1){
 
         mobileAbout.classList.add(
             "passage-one"
@@ -915,12 +878,7 @@ function updateMobileSection(){
     }
 
 
-    /*
-       700 - 1099
-       Passage 2
-    */
-
-    if(scroll < 1100){
+    if(stage === 2){
 
         mobileAbout.classList.add(
             "passage-two"
@@ -930,12 +888,7 @@ function updateMobileSection(){
     }
 
 
-    /*
-       1100 - 1499
-       Passage 3
-    */
-
-    if(scroll < 1500){
+    if(stage === 3){
 
         mobileAbout.classList.add(
             "passage-three"
@@ -945,28 +898,26 @@ function updateMobileSection(){
     }
 
 
-    /*
-       1500+
-       Passage 4
-    */
+    if(stage === 4){
 
-    mobileAbout.classList.add(
-        "passage-four"
-    );
+        mobileAbout.classList.add(
+            "passage-four"
+        );
+
+        return;
+    }
 
 }
 
 
-/* Scroll event */
-
 window.addEventListener(
     "scroll",
     updateMobileSection,
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
-
-/* Initial state */
 
 updateMobileSection();
 
