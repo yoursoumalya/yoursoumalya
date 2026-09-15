@@ -264,6 +264,114 @@ body{
 
 
 /* =================================
+   STREAMING PLATFORMS (mobile)
+================================= */
+
+.streaming-platforms{
+    display:none;
+}
+
+@media(max-width:600px){
+
+    .streaming-platforms{
+        display:block;
+
+        position:relative;
+
+        width:100%;
+        min-height:700px;
+
+        padding:90px 9% 100px;
+
+        background:#090909;
+
+        z-index:20;
+    }
+
+    .streaming-title{
+
+        font-family:"Noto Serif",serif;
+
+        font-size:clamp(
+            .9rem,
+            4vw,
+            1.35rem
+        );
+
+        font-weight:400;
+
+        letter-spacing:.06em;
+
+        color:#e7e7e7;
+
+        margin-bottom:55px;
+    }
+
+    .platform-list{
+        display:flex;
+        flex-direction:column;
+        gap:28px;
+    }
+
+    .platform-link{
+
+        display:flex;
+        align-items:center;
+
+        text-decoration:none;
+
+        color:#e7e7e7;
+
+        font-family:"Noto Serif",serif;
+
+        font-size:.9rem;
+
+        font-weight:300;
+
+        transition:opacity .3s ease;
+    }
+
+    .platform-link:hover{
+        opacity:.7;
+    }
+
+    .platform-icon{
+
+        width:42px;
+        height:42px;
+
+        object-fit:contain;
+
+        margin-right:18px;
+
+        border-radius:8px;
+
+        background:#161616;
+    }
+
+    .platform-info{
+        display:flex;
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .platform-name{
+        font-size:.92rem;
+    }
+
+    .youtube-subscribe{
+
+        font-size:.68rem;
+
+        opacity:.65;
+
+        letter-spacing:.02em;
+    }
+
+}
+
+
+/* =================================
    DESKTOP HERO IMAGE
 ================================= */
 
@@ -381,6 +489,108 @@ body{
 .desktop-about-text p:last-child{
 
     margin-bottom:0;
+}
+
+
+/* =================================
+   DESKTOP STREAMING PLATFORMS
+================================= */
+
+.desktop-streaming{
+
+    display:block;
+
+    width:100%;
+
+    background:#090909;
+
+    padding:0 8vw 110px;
+}
+
+
+.desktop-streaming-box{
+
+    max-width:1050px;
+
+    margin:0 auto;
+}
+
+
+.desktop-streaming-title{
+
+    font-family:"Noto Serif",serif;
+
+    font-size:clamp(1.1rem,1.8vw,1.5rem);
+
+    font-weight:400;
+
+    letter-spacing:.06em;
+
+    color:#e7e7e7;
+
+    margin-bottom:40px;
+}
+
+
+.desktop-platform-list{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px 48px;
+}
+
+
+.desktop-platform-link{
+
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+
+    color:#e7e7e7;
+
+    font-family:"Noto Serif",serif;
+
+    transition:opacity .3s ease;
+}
+
+
+.desktop-platform-link:hover{
+    opacity:.7;
+}
+
+
+.desktop-platform-icon{
+
+    width:40px;
+    height:40px;
+
+    object-fit:contain;
+
+    margin-right:16px;
+
+    border-radius:8px;
+
+    background:#161616;
+}
+
+
+.desktop-platform-info{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+
+.desktop-platform-name{
+    font-size:.95rem;
+    font-weight:300;
+}
+
+
+.desktop-youtube-subscribe{
+    font-size:.72rem;
+    opacity:.65;
 }
 
 
@@ -696,7 +906,7 @@ body{
 
 
 <!-- =================================
-     MOBILE CONTENT
+     MOBILE CONTENT (about text, unchanged)
 ================================= -->
 
 <div class="mobile-page">
@@ -745,6 +955,59 @@ body{
     </div>
 
 </div>
+
+
+<!-- =================================
+     STREAMING PLATFORMS (mobile) — appears after the scroll story ends
+================================= -->
+
+<section class="streaming-platforms" id="streamingPlatforms">
+
+    <div class="streaming-title">
+        ＳＴＲＥＡＭＩＮＧ ＰＬＡＴＦＯＲＭＳ
+    </div>
+
+    <div class="platform-list">
+
+        <a class="platform-link" href="https://youtube.com/@yoursoumalya" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube">
+            <div class="platform-info">
+                <div class="platform-name">@yoursoumalya</div>
+                <div class="youtube-subscribe">Subscribe on YouTube</div>
+            </div>
+        </a>
+
+        <a class="platform-link" href="https://www.instagram.com/yoursoumalya" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+            <div class="platform-info">
+                <div class="platform-name">@yoursoumalya</div>
+            </div>
+        </a>
+
+        <a class="platform-link" href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/spotify/1ED760" alt="Spotify">
+            <div class="platform-info">
+                <div class="platform-name">Soumalya Mandal</div>
+            </div>
+        </a>
+
+        <a class="platform-link" href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/applemusic/FA243C" alt="Apple Music">
+            <div class="platform-info">
+                <div class="platform-name">Soumalya Mandal</div>
+            </div>
+        </a>
+
+        <a class="platform-link" href="https://www.jiosaavn.com" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://www.google.com/s2/favicons?domain=jiosaavn.com&sz=128" alt="JioSaavn">
+            <div class="platform-info">
+                <div class="platform-name">Soumalya Mandal</div>
+            </div>
+        </a>
+
+    </div>
+
+</section>
 
 
 <!-- =================================
@@ -810,6 +1073,59 @@ body{
 
     </section>
 
+
+    <section class="desktop-streaming">
+
+        <div class="desktop-streaming-box">
+
+            <div class="desktop-streaming-title">
+                ＳＴＲＥＡＭＩＮＧ ＰＬＡＴＦＯＲＭＳ
+            </div>
+
+            <div class="desktop-platform-list">
+
+                <a class="desktop-platform-link" href="https://youtube.com/@yoursoumalya" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">@yoursoumalya</div>
+                        <div class="desktop-youtube-subscribe">Subscribe on YouTube</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://www.instagram.com/yoursoumalya" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">@yoursoumalya</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/spotify/1ED760" alt="Spotify">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">Soumalya Mandal</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/applemusic/FA243C" alt="Apple Music">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">Soumalya Mandal</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://www.jiosaavn.com" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://www.google.com/s2/favicons?domain=jiosaavn.com&sz=128" alt="JioSaavn">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">Soumalya Mandal</div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
 
 
@@ -841,7 +1157,7 @@ body{
 <script>
 
 /* =================================
-   MOBILE SCROLL STORY
+   MOBILE SCROLL STORY (unchanged from your working version)
 ================================= */
 
 const mobileAbout =
