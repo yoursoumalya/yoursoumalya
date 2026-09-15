@@ -238,14 +238,11 @@ body{
 
         opacity:0;
 
-        transform:translateY(24px);
-
-        filter:blur(2px);
+        transform:translateY(12px);
 
         transition:
-            opacity 1s cubic-bezier(.22,1,.36,1),
-            transform 1s cubic-bezier(.22,1,.36,1),
-            filter 1s cubic-bezier(.22,1,.36,1);
+            opacity .5s ease,
+            transform .5s ease;
     }
 
 
@@ -254,10 +251,10 @@ body{
         opacity:1;
 
         transform:translateY(0);
-
-        filter:blur(0);
     }
 
+
+    /* Passage starts hidden after heading */
 
     .mobile-about.passage-mode .about-heading{
         opacity:1;
@@ -460,6 +457,8 @@ body{
 }
 
 
+/* Main cinematic shine */
+
 .name::after{
 
     content:"ѕσυмαℓуα мαn∂αℓ";
@@ -513,6 +512,8 @@ body{
         forwards;
 }
 
+
+/* Soft reflection */
 
 .name::before{
 
@@ -734,8 +735,6 @@ body{
 
             <div class="passage" id="passage4">
 
-                ᴀɴᴅ<br><br>
-
                 𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
 
             </div>
@@ -862,73 +861,22 @@ const passages = [
 ];
 
 
-let shownStage = -1;
-let targetStage = -1;
-let stageChanging = false;
+function updateMobileAbout(){
 
+    if(window.innerWidth > 600){
+        return;
+    }
 
-/* =================================
-   FIND TARGET STAGE
-================================= */
-
-function getTargetStage(){
 
     const scrollY = window.scrollY;
 
 
+    /*
+       Before scrolling:
+       Everything remains invisible.
+    */
+
     if(scrollY < 80){
-
-        return -1;
-
-    }
-
-
-    if(scrollY < 300){
-
-        return 0;
-
-    }
-
-
-    if(scrollY < 700){
-
-        return 1;
-
-    }
-
-
-    if(scrollY < 1100){
-
-        return 2;
-
-    }
-
-
-    if(scrollY < 1500){
-
-        return 3;
-
-    }
-
-
-    return 4;
-}
-
-
-/* =================================
-   SHOW ONE STAGE
-================================= */
-
-function showStage(stage){
-
-    if(window.innerWidth > 600){
-
-        return;
-
-    }
-
-
-    if(stage === -1){
 
         mobileAbout.classList.remove("show");
 
@@ -942,18 +890,68 @@ function showStage(stage){
     }
 
 
+    /*
+       Heading appears first.
+    */
+
     mobileAbout.classList.add("show");
 
 
-    if(stage === 0){
+    let currentPassage = -1;
 
-        passages.forEach(passage => {
 
-            passage.classList.remove("active");
+    /*
+       About heading stage
+    */
 
-        });
+    if(scrollY >= 80 && scrollY < 300){
 
-        return;
+        currentPassage = -1;
+
+    }
+
+
+    /*
+       Passage 1
+    */
+
+    if(scrollY >= 300){
+
+        currentPassage = 0;
+
+    }
+
+
+    /*
+       Passage 2
+    */
+
+    if(scrollY >= 700){
+
+        currentPassage = 1;
+
+    }
+
+
+    /*
+       Passage 3
+    */
+
+    if(scrollY >= 1100){
+
+        currentPassage = 2;
+
+    }
+
+
+    /*
+       Passage 4
+    */
+
+    if(scrollY >= 1500){
+
+        currentPassage = 3;
+
     }
 
 
@@ -961,83 +959,10 @@ function showStage(stage){
 
         passage.classList.toggle(
             "active",
-            index === stage - 1
+            index === currentPassage
         );
 
     });
-
-}
-
-
-/* =================================
-   ONE-BY-ONE ANIMATION
-================================= */
-
-function processStage(){
-
-    if(stageChanging){
-
-        return;
-
-    }
-
-
-    if(shownStage === targetStage){
-
-        return;
-
-    }
-
-
-    stageChanging = true;
-
-
-    if(targetStage > shownStage){
-
-        shownStage++;
-
-    }else{
-
-        shownStage--;
-
-    }
-
-
-    showStage(shownStage);
-
-
-    setTimeout(() => {
-
-        stageChanging = false;
-
-
-        if(shownStage !== targetStage){
-
-            processStage();
-
-        }
-
-    }, 1050);
-
-}
-
-
-/* =================================
-   SCROLL
-================================= */
-
-function updateMobileAbout(){
-
-    if(window.innerWidth > 600){
-
-        return;
-
-    }
-
-
-    targetStage = getTargetStage();
-
-    processStage();
 
 }
 
@@ -1055,7 +980,7 @@ window.addEventListener(
 );
 
 
-showStage(-1);
+updateMobileAbout();
 
 </script>
 
