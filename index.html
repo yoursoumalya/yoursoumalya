@@ -55,6 +55,8 @@ body{
         background-image:url("ggg.jpg");
         background-size:100% auto;
         background-position:center top;
+
+        min-height:500vh;
     }
 
 }
@@ -91,6 +93,210 @@ body{
         top:20px;
         left:20px;
         font-size:1.15rem;
+    }
+
+}
+
+
+/* ================================
+   MOBILE ABOUT SECTION
+================================ */
+
+.mobile-about{
+    display:none;
+}
+
+
+@media(max-width:600px){
+
+    .mobile-about{
+        display:block;
+
+        position:fixed;
+
+        top:25%;
+        right:7%;
+
+        width:54%;
+        z-index:80;
+
+        opacity:0;
+        visibility:hidden;
+
+        transition:
+            opacity .55s ease,
+            visibility .55s ease;
+    }
+
+
+    .mobile-about.show{
+        opacity:1;
+        visibility:visible;
+    }
+
+
+    .about-heading{
+        font-family:"Noto Serif",serif;
+
+        font-size:clamp(
+            .9rem,
+            4vw,
+            1.35rem
+        );
+
+        font-weight:400;
+
+        letter-spacing:.035em;
+
+        color:#e7e7e7;
+
+        margin-bottom:12px;
+    }
+
+
+    .about-passage{
+        position:relative;
+
+        font-family:"Noto Serif",serif;
+
+        font-size:clamp(
+            .68rem,
+            3vw,
+            1rem
+        );
+
+        line-height:1.65;
+
+        font-weight:300;
+
+        color:#e7e7e7;
+
+        letter-spacing:.015em;
+    }
+
+
+    .passage{
+        position:absolute;
+
+        top:0;
+        left:0;
+
+        width:100%;
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+        transition:
+            opacity .5s ease,
+            transform .5s ease;
+    }
+
+
+    .passage.active{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+
+
+/* ================================
+   DESKTOP ABOUT SECTION
+================================ */
+
+.desktop-about{
+    display:block;
+
+    position:relative;
+
+    width:100%;
+
+    margin-top:0;
+
+    min-height:500px;
+
+    padding:90px 8vw;
+
+    background:#090909;
+}
+
+
+.desktop-about-box{
+    max-width:1050px;
+
+    margin:0 auto;
+
+    padding:48px 55px;
+
+    background:rgba(255,255,255,.075);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-radius:18px;
+
+    color:#e7e7e7;
+}
+
+
+.desktop-about-heading{
+    font-family:"Noto Serif",serif;
+
+    font-size:clamp(
+        1.2rem,
+        2.2vw,
+        2rem
+    );
+
+    font-weight:400;
+
+    letter-spacing:.035em;
+
+    margin-bottom:25px;
+}
+
+
+.desktop-about-text{
+    font-family:"Noto Serif",serif;
+
+    font-size:clamp(
+        .9rem,
+        1.3vw,
+        1.15rem
+    );
+
+    font-weight:300;
+
+    line-height:1.8;
+
+    letter-spacing:.012em;
+
+    color:#dedede;
+}
+
+
+.desktop-about-text p{
+    margin-bottom:25px;
+}
+
+
+.desktop-about-text p:last-child{
+    margin-bottom:0;
+}
+
+
+/* ================================
+   MOBILE / DESKTOP SWITCH
+================================ */
+
+@media(max-width:600px){
+
+    .desktop-about{
+        display:none;
     }
 
 }
@@ -346,19 +552,98 @@ body{
 
 <body>
 
-<!-- Main Website -->
+
+<!-- =================================
+     MAIN WEBSITE
+================================= -->
 
 <div class="site">
 
     <!-- Artist Name -->
+
     <div class="site-name">
         ѕσυмαℓуα мαn∂αℓ
     </div>
 
+
+    <!-- =================================
+         MOBILE ABOUT
+    ================================= -->
+
+    <div class="mobile-about" id="mobileAbout">
+
+        <div class="about-heading">
+            Ａｂｏｕｔ Ｓｏｕｍａｌｙａ
+        </div>
+
+        <div class="about-passage">
+
+            <div class="passage" id="passage1">
+                𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
+            </div>
+
+
+            <div class="passage" id="passage2">
+                𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
+            </div>
+
+
+            <div class="passage" id="passage3">
+                𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
+            </div>
+
+
+            <div class="passage" id="passage4">
+                𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         DESKTOP ABOUT
+    ================================= -->
+
+    <section class="desktop-about">
+
+        <div class="desktop-about-box">
+
+            <div class="desktop-about-heading">
+                Ａｂｏｕｔ Ｓｏｕｍａｌｙａ
+            </div>
+
+            <div class="desktop-about-text">
+
+                <p>
+                    𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
+                </p>
+
+                <p>
+                    𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
+                </p>
+
+                <p>
+                    𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
+                </p>
+
+                <p>
+                    𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
 
 
-<!-- Intro -->
+<!-- =================================
+     INTRO
+================================= -->
 
 <div class="intro">
 
@@ -367,6 +652,101 @@ body{
     </div>
 
 </div>
+
+
+<script>
+
+/* =================================
+   MOBILE SCROLL STORY
+================================= */
+
+const mobileAbout = document.getElementById("mobileAbout");
+
+const passages = [
+    document.getElementById("passage1"),
+    document.getElementById("passage2"),
+    document.getElementById("passage3"),
+    document.getElementById("passage4")
+];
+
+
+function updateMobileAbout(){
+
+    if(window.innerWidth > 600){
+        return;
+    }
+
+    const scrollY = window.scrollY;
+
+    /*
+       First scroll:
+       About + Passage 1 appears.
+    */
+
+    if(scrollY < 80){
+
+        mobileAbout.classList.remove("show");
+
+        passages.forEach(passage=>{
+            passage.classList.remove("active");
+        });
+
+        return;
+    }
+
+
+    mobileAbout.classList.add("show");
+
+
+    /*
+       Passage changes according
+       to scroll position.
+    */
+
+    let currentPassage = 0;
+
+    if(scrollY >= 420){
+        currentPassage = 1;
+    }
+
+    if(scrollY >= 800){
+        currentPassage = 2;
+    }
+
+    if(scrollY >= 1180){
+        currentPassage = 3;
+    }
+
+
+    passages.forEach((passage,index)=>{
+
+        passage.classList.toggle(
+            "active",
+            index === currentPassage
+        );
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateMobileAbout,
+    {passive:true}
+);
+
+
+window.addEventListener(
+    "resize",
+    updateMobileAbout
+);
+
+
+updateMobileAbout();
+
+</script>
+
 
 </body>
 </html>
