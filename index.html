@@ -1179,4 +1179,293 @@ body{
                     </div>
                 </a>
 
-                <a clas
+                <a class="desktop-platform-link" href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/spotify/1ED760" alt="Spotify">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">Spotify</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/applemusic/FA243C" alt="Apple Music">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">Apple Music</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link" href="https://www.jiosaavn.com" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://www.google.com/s2/favicons?domain=jiosaavn.com&sz=128" alt="JioSaavn">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">JioSaavn</div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="site-footer">
+
+    <a class="footer-link" href="terms.html">Terms &amp; Conditions</a>
+
+    <div class="footer-copyright">
+        ©2026 Website design by ѕσυмαℓуα
+    </div>
+
+</footer>
+
+
+<!-- =================================
+     ARTIST NAME
+================================= -->
+
+<div class="site-name">
+
+    ѕσυмαℓуα мαn∂αℓ
+
+</div>
+
+
+<!-- =================================
+     INTRO
+================================= -->
+
+<div class="intro">
+
+    <div class="name">
+
+        ѕσυмαℓуα мαn∂αℓ
+
+    </div>
+
+</div>
+
+<script>
+
+/* =================================
+   MOBILE SCROLL STORY (unchanged from your working version)
+================================= */
+
+const mobileAbout =
+    document.getElementById("mobileAbout");
+
+const passages = [
+
+    document.getElementById("passage1"),
+
+    document.getElementById("passage2"),
+
+    document.getElementById("passage3"),
+
+    document.getElementById("passage4")
+
+];
+
+
+let shownStage = -1;
+let targetStage = -1;
+let stageChanging = false;
+
+
+function getTargetStage(){
+
+    const scrollY = window.scrollY;
+
+
+    if(scrollY < 80){
+
+        return -1;
+
+    }
+
+
+    if(scrollY < 300){
+
+        return 0;
+
+    }
+
+
+    if(scrollY < 700){
+
+        return 1;
+
+    }
+
+
+    if(scrollY < 1100){
+
+        return 2;
+
+    }
+
+
+    if(scrollY < 1500){
+
+        return 3;
+
+    }
+
+
+    return 4;
+
+}
+
+
+function showStage(stage){
+
+    if(window.innerWidth > 600){
+
+        return;
+
+    }
+
+
+    if(stage === -1){
+
+        mobileAbout.classList.remove("show");
+
+        passages.forEach(passage => {
+
+            passage.classList.remove("active");
+
+        });
+
+        return;
+
+    }
+
+
+    mobileAbout.classList.add("show");
+
+
+    if(stage === 0){
+
+        passages.forEach(passage => {
+
+            passage.classList.remove("active");
+
+        });
+
+        return;
+
+    }
+
+
+    passages.forEach((passage,index) => {
+
+        passage.classList.toggle(
+
+            "active",
+
+            index === stage - 1
+
+        );
+
+    });
+
+}
+
+
+function processStage(){
+
+    if(stageChanging){
+
+        return;
+
+    }
+
+
+    if(shownStage === targetStage){
+
+        return;
+
+    }
+
+
+    stageChanging = true;
+
+
+    if(targetStage > shownStage){
+
+        shownStage++;
+
+    }
+    else{
+
+        shownStage--;
+
+    }
+
+
+    showStage(shownStage);
+
+
+    setTimeout(() => {
+
+        stageChanging = false;
+
+
+        if(shownStage !== targetStage){
+
+            processStage();
+
+        }
+
+    },1050);
+
+}
+
+
+function updateMobileAbout(){
+
+    if(window.innerWidth > 600){
+
+        return;
+
+    }
+
+
+    targetStage = getTargetStage();
+
+    processStage();
+
+}
+
+
+window.addEventListener(
+
+    "scroll",
+
+    updateMobileAbout,
+
+    {passive:true}
+
+);
+
+
+window.addEventListener(
+
+    "resize",
+
+    updateMobileAbout
+
+);
+
+
+showStage(-1);
+
+</script>
+
+
+</body>
+</html>
