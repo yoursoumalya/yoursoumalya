@@ -86,7 +86,7 @@ body{
 
         width:100%;
 
-        height:2100px;
+        height:2600px;
 
         z-index:10;
     }
@@ -677,6 +677,110 @@ body{
 
 }
 
+
+/* =================================
+   STREAMING PLATFORMS
+================================= */
+
+.streaming-platforms{
+    display:none;
+}
+
+@media(max-width:600px){
+
+    .streaming-platforms{
+        display:block;
+
+        position:relative;
+
+        width:100%;
+        min-height:700px;
+
+        padding:90px 9% 100px;
+
+        background:#090909;
+
+        z-index:20;
+    }
+
+    .streaming-title{
+
+        font-family:"Noto Serif",serif;
+
+        font-size:clamp(
+            .9rem,
+            4vw,
+            1.35rem
+        );
+
+        font-weight:400;
+
+        letter-spacing:.06em;
+
+        color:#e7e7e7;
+
+        margin-bottom:55px;
+    }
+
+    .platform-list{
+        display:flex;
+        flex-direction:column;
+        gap:28px;
+    }
+
+    .platform-link{
+
+        display:flex;
+        align-items:center;
+
+        text-decoration:none;
+
+        color:#e7e7e7;
+
+        font-family:"Noto Serif",serif;
+
+        font-size:.9rem;
+
+        font-weight:300;
+
+        transition:opacity .3s ease;
+    }
+
+    .platform-link:hover{
+        opacity:.7;
+    }
+
+    .platform-icon{
+
+        width:42px;
+        height:42px;
+
+        object-fit:contain;
+
+        margin-right:18px;
+    }
+
+    .platform-info{
+        display:flex;
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .platform-name{
+        font-size:.92rem;
+    }
+
+    .youtube-subscribe{
+
+        font-size:.68rem;
+
+        opacity:.65;
+
+        letter-spacing:.02em;
+    }
+
+}
+
 </style>
 </head>
 
@@ -748,6 +852,146 @@ body{
 
 
 <!-- =================================
+     STREAMING PLATFORMS
+================================= -->
+
+<section class="streaming-platforms" id="streamingPlatforms">
+
+    <div class="streaming-title">
+        ＳＴＲＥＡＭＩＮＧ ＰＬＡＴＦＯＲＭＳ
+    </div>
+
+    <div class="platform-list">
+
+        <a
+            class="platform-link"
+            href="https://youtube.com/@yoursoumalya"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-icon"
+                src="https://cdn.simpleicons.org/youtube"
+                alt="YouTube"
+            >
+
+            <div class="platform-info">
+
+                <div class="platform-name">
+                    @yoursoumalya
+                </div>
+
+                <div class="youtube-subscribe">
+                    Subscribe on YouTube
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="platform-link"
+            href="https://www.instagram.com/yoursoumalya"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-icon"
+                src="https://cdn.simpleicons.org/instagram"
+                alt="Instagram"
+            >
+
+            <div class="platform-info">
+
+                <div class="platform-name">
+                    @yoursoumalya
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="platform-link"
+            href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-icon"
+                src="https://cdn.simpleicons.org/spotify"
+                alt="Spotify"
+            >
+
+            <div class="platform-info">
+
+                <div class="platform-name">
+                    Soumalya Mandal
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="platform-link"
+            href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-icon"
+                src="https://cdn.simpleicons.org/applemusic"
+                alt="Apple Music"
+            >
+
+            <div class="platform-info">
+
+                <div class="platform-name">
+                    Soumalya Mandal
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a
+            class="platform-link"
+            href="https://www.jiosaavn.com"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-icon"
+                src="https://cdn.simpleicons.org/jiosaavn"
+                alt="JioSaavn"
+            >
+
+            <div class="platform-info">
+
+                <div class="platform-name">
+                    Soumalya Mandal
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
      DESKTOP PAGE
 ================================= -->
 
@@ -785,276 +1029,5 @@ body{
 
                 <p>
 
-                    𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
-
-                </p>
-
-
-                <p>
-
-                    𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
-
-                </p>
-
-
-                <p>
-
-                    𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
-
-                </p>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<!-- =================================
-     ARTIST NAME
-================================= -->
-
-<div class="site-name">
-
-    ѕσυмαℓуα мαn∂αℓ
-
-</div>
-
-
-<!-- =================================
-     INTRO
-================================= -->
-
-<div class="intro">
-
-    <div class="name">
-
-        ѕσυмαℓуα мαn∂αℓ
-
-    </div>
-
-</div>
-
-<script>
-
-/* =================================
-   MOBILE SCROLL STORY
-================================= */
-
-const mobileAbout =
-    document.getElementById("mobileAbout");
-
-const passages = [
-
-    document.getElementById("passage1"),
-
-    document.getElementById("passage2"),
-
-    document.getElementById("passage3"),
-
-    document.getElementById("passage4")
-
-];
-
-
-let shownStage = -1;
-let targetStage = -1;
-let stageChanging = false;
-
-
-function getTargetStage(){
-
-    const scrollY = window.scrollY;
-
-
-    if(scrollY < 80){
-
-        return -1;
-
-    }
-
-
-    if(scrollY < 300){
-
-        return 0;
-
-    }
-
-
-    if(scrollY < 700){
-
-        return 1;
-
-    }
-
-
-    if(scrollY < 1100){
-
-        return 2;
-
-    }
-
-
-    if(scrollY < 1500){
-
-        return 3;
-
-    }
-
-
-    return 4;
-
-}
-
-
-function showStage(stage){
-
-    if(window.innerWidth > 600){
-
-        return;
-
-    }
-
-
-    if(stage === -1){
-
-        mobileAbout.classList.remove("show");
-
-        passages.forEach(passage => {
-
-            passage.classList.remove("active");
-
-        });
-
-        return;
-
-    }
-
-
-    mobileAbout.classList.add("show");
-
-
-    if(stage === 0){
-
-        passages.forEach(passage => {
-
-            passage.classList.remove("active");
-
-        });
-
-        return;
-
-    }
-
-
-    passages.forEach((passage,index) => {
-
-        passage.classList.toggle(
-
-            "active",
-
-            index === stage - 1
-
-        );
-
-    });
-
-}
-
-
-function processStage(){
-
-    if(stageChanging){
-
-        return;
-
-    }
-
-
-    if(shownStage === targetStage){
-
-        return;
-
-    }
-
-
-    stageChanging = true;
-
-
-    if(targetStage > shownStage){
-
-        shownStage++;
-
-    }
-    else{
-
-        shownStage--;
-
-    }
-
-
-    showStage(shownStage);
-
-
-    setTimeout(() => {
-
-        stageChanging = false;
-
-
-        if(shownStage !== targetStage){
-
-            processStage();
-
-        }
-
-    },1050);
-
-}
-
-
-function updateMobileAbout(){
-
-    if(window.innerWidth > 600){
-
-        return;
-
-    }
-
-
-    targetStage = getTargetStage();
-
-    processStage();
-
-}
-
-
-window.addEventListener(
-
-    "scroll",
-
-    updateMobileAbout,
-
-    {passive:true}
-
-);
-
-
-window.addEventListener(
-
-    "resize",
-
-    updateMobileAbout
-
-);
-
-
-showStage(-1);
-
-</script>
-
-
-</body>
-</html>
+                    Your HTML file is ready:
+[file-tag: code-generated-file-023c9d8e-da85-469a-a528-3a8ac1f00533]
