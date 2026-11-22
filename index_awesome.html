@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="google-site-verification" content="Ue46E8yBqhE-oQx01LZBuHMalFVvn3ccvG73Qq1aC9c" />
+<title>ѕσυмαℓуα мαn∂αℓ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:0;--ink:#e9e9e9;--bg:#090909}
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:"Noto Serif",serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ---------- scroll progress + film grain ---------- */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:500;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,transparent,#fff);opacity:.7}
+.grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ---------- artist name ---------- */
+.site-name{position:fixed;top:28px;left:32px;z-index:100;font-size:clamp(1.2rem,2.2vw,2rem);font-weight:300;letter-spacing:.045em;white-space:nowrap;text-shadow:0 1px 10px rgba(0,0,0,.55);opacity:0;animation:fadeUp 1.2s ease 2.6s forwards}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- platform cards (shared) ---------- */
+.platform-link,.desktop-platform-link{display:flex;align-items:center;text-decoration:none;color:var(--ink);padding:14px 20px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.045);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease}
+.platform-link:hover,.platform-link:active,.desktop-platform-link:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.09);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.platform-icon,.desktop-platform-icon{width:42px;height:42px;object-fit:contain;margin-right:18px;border-radius:10px;background:#161616;padding:4px}
+.platform-info,.desktop-platform-info{display:flex;flex-direction:column;gap:5px}
+.platform-name,.desktop-platform-name{font-size:.95rem;font-weight:300}
+.youtube-subscribe,.desktop-youtube-subscribe{font-size:.7rem;opacity:.6;letter-spacing:.02em}
+.streaming-title,.desktop-streaming-title{font-size:clamp(1rem,1.8vw,1.5rem);font-weight:400;letter-spacing:.06em;margin-bottom:34px}
+
+/* ---------- MOBILE ---------- */
+.mobile-background,.mobile-page,.mobile-about,.streaming-platforms,.scroll-hint{display:none}
+
+@media(max-width:600px){
+ .desktop-page{display:none}
+
+ .mobile-background{display:block;position:fixed;inset:0;width:100vw;height:100dvh;z-index:0;background:var(--bg);pointer-events:none;overflow:hidden}
+ .mobile-background img{width:100%;height:100%;display:block;object-fit:cover;object-position:center bottom;
+  transform:scale(calc(1.02 + var(--p)*.08));transform-origin:center bottom;opacity:0;animation:imgIn 2s ease 2.2s forwards;will-change:transform}
+ .mobile-background::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,9,9,.55),rgba(9,9,9,.1) 30%,rgba(9,9,9,.25) 100%);opacity:calc(.35 + var(--p)*.65)}
+
+ .mobile-page{display:block;position:relative;width:100%;height:2100px;z-index:10}
+
+ .site-name{top:calc(20px + env(safe-area-inset-top,0px));left:20px;font-size:1.15rem}
+
+ .scroll-hint{display:flex;flex-direction:column;align-items:center;gap:8px;position:fixed;left:50%;top:50%;transform:translateX(-50%);z-index:60;font-size:.62rem;letter-spacing:.35em;opacity:0;animation:fadeUp 1s ease 3.2s forwards;transition:opacity .5s ease;pointer-events:none;text-shadow:0 1px 8px #000}
+ .scroll-hint i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:drip 1.8s ease-in-out infinite}
+ .scroll-hint.off{opacity:0!important;animation:none}
+
+ .mobile-about{display:block;position:fixed;top:18%;right:7%;width:54%;z-index:80;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .6s ease,visibility .6s ease,transform .6s ease;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+ .mobile-about.show{opacity:1;visibility:visible;transform:none}
+ .mobile-about.gone{opacity:0;visibility:hidden}
+ .about-heading{font-size:clamp(.9rem,4vw,1.35rem);font-weight:400;line-height:1.15;letter-spacing:.035em;margin-bottom:18px;white-space:pre-line}
+ .about-passage{position:relative;width:100%;font-size:clamp(.68rem,3vw,1rem);line-height:1.65;font-weight:300;letter-spacing:.015em}
+ .passage{position:absolute;top:0;left:0;width:100%;opacity:0;filter:blur(6px);transform:translateY(14px);transition:opacity .55s ease,transform .55s ease,filter .55s ease}
+ .passage.active{opacity:1;filter:blur(0);transform:none}
+
+ .streaming-platforms{display:block;position:relative;width:100%;min-height:760px;padding:170px 9% 100px;background:linear-gradient(to bottom,transparent,var(--bg) 150px);z-index:20}
+ .platform-list{display:flex;flex-direction:column;gap:18px}
+}
+
+/* ---------- DESKTOP ---------- */
+.desktop-page{display:block;width:100%;background:var(--bg);position:relative;z-index:5}
+.desktop-hero{position:relative;width:100%;line-height:0;overflow:hidden}
+.desktop-hero img{display:block;width:100%;height:auto;transform:scale(1.07);opacity:0;animation:heroIn 2.4s cubic-bezier(.22,1,.36,1) 2.2s forwards}
+.desktop-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom,transparent,var(--bg))}
+
+.desktop-about{width:100%;padding:90px 8vw}
+.desktop-about-box{max-width:1050px;margin:0 auto;padding:52px 58px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.desktop-about-heading{font-size:clamp(1.2rem,2.2vw,2rem);font-weight:400;letter-spacing:.035em;margin-bottom:26px}
+.desktop-about-text{font-size:clamp(.9rem,1.3vw,1.15rem);font-weight:300;line-height:1.85;letter-spacing:.012em;color:#dedede}
+.desktop-about-text p{margin-bottom:25px}
+.desktop-about-text p:last-child{margin-bottom:0}
+
+.desktop-streaming{width:100%;padding:0 8vw 110px}
+.desktop-streaming-box{max-width:1050px;margin:0 auto}
+.desktop-platform-list{display:flex;flex-wrap:wrap;gap:22px}
+
+.glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:6;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 65%);opacity:0;transition:opacity .6s ease}
+
+/* ---------- footer ---------- */
+.site-footer{position:relative;z-index:30;width:100%;background:var(--bg);padding:40px 8vw 60px;text-align:center}
+.footer-link{display:inline-block;font-size:.85rem;font-weight:300;color:var(--ink);text-decoration:none;opacity:.75;letter-spacing:.03em;margin-bottom:14px;transition:opacity .3s ease}
+.footer-link:hover{opacity:1}
+.footer-copyright{font-size:.72rem;font-weight:300;color:#999;letter-spacing:.02em}
+@media(max-width:600px){.site-footer{padding:30px 9% 50px}.footer-link{font-size:.78rem}.footer-copyright{font-size:.65rem}}
+
+/* ---------- intro ---------- */
+.intro{position:fixed;inset:0;width:100%;height:100dvh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#171717 0%,#101010 42%,#090909 78%,#070707 100%);z-index:9999;animation:introOut 1s ease-in-out 2s forwards}
+.name{position:relative;display:inline-block;font-size:clamp(2.2rem,7vw,6.2rem);font-weight:300;letter-spacing:.045em;white-space:nowrap;animation:textAppear .9s cubic-bezier(.22,1,.36,1) forwards}
+.name::after,.name::before{content:"ѕσυмαℓуα мαn∂αℓ";position:absolute;inset:0;pointer-events:none;color:transparent;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;opacity:0}
+.name::after{background-image:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.2) 45%,#fff 50%,rgba(255,255,255,.2) 55%,transparent 62%);background-size:260% 100%;background-position:130% 0;filter:drop-shadow(0 0 7px rgba(255,255,255,.32));animation:shine 1.2s cubic-bezier(.35,0,.2,1) .7s forwards}
+.name::before{background-image:linear-gradient(105deg,transparent 43%,rgba(255,255,255,.25) 50%,transparent 57%);background-size:250% 100%;background-position:130% 0;animation:shine 1.2s cubic-bezier(.35,0,.2,1) .7s forwards}
+@media(max-width:600px){.name{font-size:clamp(1.8rem,9.5vw,4rem);letter-spacing:.035em}}
+
+@keyframes textAppear{0%{opacity:0;transform:scale(.94);letter-spacing:.16em;filter:blur(8px)}55%{opacity:1;filter:blur(0)}100%{opacity:1;transform:scale(1);letter-spacing:.045em;filter:blur(0)}}
+@keyframes shine{0%{opacity:0;background-position:135% 0}25%,50%{opacity:1}88%{opacity:.35}100%{opacity:0;background-position:-135% 0}}
+@keyframes introOut{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes heroIn{to{opacity:1;transform:scale(1)}}
+@keyframes imgIn{to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="grain"></div>
+<div class="glow" id="glow"></div>
+
+<!-- MOBILE FIXED IMAGE -->
+<div class="mobile-background">
+    <img src="ggg.jpg" alt="Soumalya">
+</div>
+
+<div class="scroll-hint" id="scrollHint"><span>SCROLL</span><i></i></div>
+
+<!-- MOBILE CONTENT -->
+<div class="mobile-page">
+    <div class="mobile-about" id="mobileAbout">
+
+        <div class="about-heading">
+Ａｂｏｕｔ
+Ｓｏｕｍａｌｙａ
+        </div>
+
+        <div class="about-passage">
+
+            <div class="passage" id="passage1">
+                𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.
+            </div>
+
+            <div class="passage" id="passage2">
+                𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.
+            </div>
+
+            <div class="passage" id="passage3">
+                𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.
+            </div>
+
+            <div class="passage" id="passage4">
+                𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- STREAMING (mobile) -->
+<section class="streaming-platforms" id="streamingPlatforms">
+
+    <div class="streaming-title rv">ＳＴＲＥＡＭＩＮＧ ＰＬＡＴＦＯＲＭＳ</div>
+
+    <div class="platform-list">
+
+        <a class="platform-link rv" style="--d:.05s" href="https://youtube.com/@yoursoumalya" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube">
+            <div class="platform-info">
+                <div class="platform-name">@yoursoumalya</div>
+                <div class="youtube-subscribe">Subscribe on YouTube</div>
+            </div>
+        </a>
+
+        <a class="platform-link rv" style="--d:.12s" href="https://www.instagram.com/yoursoumalya" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+            <div class="platform-info"><div class="platform-name">@yoursoumalya</div></div>
+        </a>
+
+        <a class="platform-link rv" style="--d:.19s" href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/spotify/1ED760" alt="Spotify">
+            <div class="platform-info"><div class="platform-name">Spotify</div></div>
+        </a>
+
+        <a class="platform-link rv" style="--d:.26s" href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://cdn.simpleicons.org/applemusic/FA243C" alt="Apple Music">
+            <div class="platform-info"><div class="platform-name">Apple Music</div></div>
+        </a>
+
+        <a class="platform-link rv" style="--d:.33s" href="https://www.jiosaavn.com" target="_blank" rel="noopener">
+            <img class="platform-icon" src="https://www.google.com/s2/favicons?domain=jiosaavn.com&sz=128" alt="JioSaavn">
+            <div class="platform-info"><div class="platform-name">JioSaavn</div></div>
+        </a>
+
+    </div>
+</section>
+
+<!-- DESKTOP PAGE -->
+<div class="desktop-page">
+
+    <div class="desktop-hero">
+        <img src="ddd.jpg" alt="Soumalya">
+    </div>
+
+    <section class="desktop-about">
+        <div class="desktop-about-box rv">
+
+            <div class="desktop-about-heading">Ａｂｏｕｔ Ｓｏｕｍａｌｙａ</div>
+
+            <div class="desktop-about-text">
+                <p>𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝙼𝚊𝚗𝚍𝚊𝚕 𝚒𝚜 𝚊𝚗 𝚎𝚖𝚎𝚛𝚐𝚒𝚗𝚐 𝚒𝚗𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚝 𝚊𝚛𝚝𝚒𝚜𝚝 𝚍𝚛𝚒𝚟𝚎𝚗 𝚋𝚢 𝚌𝚞𝚛𝚒𝚘𝚜𝚒𝚝𝚢, 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚍𝚎𝚜𝚒𝚛𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚝𝚛𝚞𝚕𝚢 𝚑𝚒𝚜 𝚘𝚠𝚗. 𝚆𝚒𝚝𝚑 𝚗𝚘 𝚕𝚘𝚗𝚐 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚛𝚎𝚕𝚎𝚊𝚜𝚎𝚜 𝚘𝚛 𝚊𝚌𝚑𝚒𝚎𝚟𝚎𝚖𝚎𝚗𝚝𝚜 𝚋𝚎𝚑𝚒𝚗𝚍 𝚑𝚒𝚖 𝚢𝚎𝚝, 𝚑𝚒𝚜 𝚓𝚘𝚞𝚛𝚗𝚎𝚢 𝚋𝚎𝚐𝚒𝚗𝚜 𝚠𝚒𝚝𝚑 𝚊 𝚜𝚒𝚖𝚙𝚕𝚎 𝚋𝚎𝚕𝚒𝚎𝚏 𝚝𝚑𝚊𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚑𝚊𝚜 𝚗𝚘 𝚕𝚒𝚖𝚒𝚝𝚜.</p>
+                <p>𝙴𝚡𝚙𝚕𝚘𝚛𝚒𝚗𝚐 𝚖𝚞𝚜𝚒𝚌, 𝚜𝚘𝚞𝚗𝚍, 𝚊𝚗𝚍 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚎𝚡𝚙𝚛𝚎𝚜𝚜𝚒𝚘𝚗, 𝚂𝚘𝚞𝚖𝚊𝚕𝚢𝚊 𝚒𝚜 𝚋𝚞𝚒𝚕𝚍𝚒𝚗𝚐 𝚑𝚒𝚜 𝚘𝚠𝚗 𝚙𝚊𝚝𝚑—𝚘𝚗𝚎 𝚌𝚛𝚎𝚊𝚝𝚒𝚘𝚗 𝚊𝚝 𝚊 𝚝𝚒𝚖𝚎. 𝚃𝚑𝚒𝚜 𝚒𝚜 𝚗𝚘𝚝 𝚊 𝚜𝚝𝚘𝚛𝚢 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚎 𝚑𝚊𝚜 𝚊𝚕𝚛𝚎𝚊𝚍𝚢 𝚋𝚎𝚎𝚗, 𝚋𝚞𝚝 𝚘𝚏 𝚠𝚑𝚎𝚛𝚎 𝚑𝚒𝚜 𝚌𝚛𝚎𝚊𝚝𝚒𝚟𝚒𝚝𝚢 𝚌𝚊𝚗 𝚝𝚊𝚔𝚎 𝚑𝚒𝚖 𝚗𝚎𝚡𝚝.</p>
+                <p>𝘛𝘩𝘦 𝘫𝘰𝘶𝘳𝘯𝘦𝘺 𝘩𝘢𝘴 𝘰𝘯𝘭𝘺 𝘫𝘶𝘴𝘵 𝘣𝘦𝘨𝘶𝘯.</p>
+                <p>𝘠𝘰𝘶𝘳 𝘭𝘰𝘷𝘦 𝘢𝘯𝘥 𝘴𝘶𝘱𝘱𝘰𝘳𝘵 𝘸𝘪𝘭𝘭 𝘢𝘭𝘸𝘢𝘺𝘴 𝘣𝘦 𝘢 𝘱𝘢𝘳𝘵 𝘰𝘧 𝘦𝘷𝘦𝘳𝘺 𝘴𝘵𝘦𝘱 𝘰𝘧 𝘮𝘺 𝘫𝘰𝘶𝘳𝘯𝘦𝘺.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="desktop-streaming">
+        <div class="desktop-streaming-box">
+
+            <div class="desktop-streaming-title rv">ＳＴＲＥＡＭＩＮＧ ＰＬＡＴＦＯＲＭＳ</div>
+
+            <div class="desktop-platform-list">
+
+                <a class="desktop-platform-link rv" style="--d:.05s" href="https://youtube.com/@yoursoumalya" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube">
+                    <div class="desktop-platform-info">
+                        <div class="desktop-platform-name">@yoursoumalya</div>
+                        <div class="desktop-youtube-subscribe">Subscribe on YouTube</div>
+                    </div>
+                </a>
+
+                <a class="desktop-platform-link rv" style="--d:.12s" href="https://www.instagram.com/yoursoumalya" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+                    <div class="desktop-platform-info"><div class="desktop-platform-name">@yoursoumalya</div></div>
+                </a>
+
+                <a class="desktop-platform-link rv" style="--d:.19s" href="https://open.spotify.com/artist/7t7b7VkjNCwyVJX5M0fy07" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/spotify/1ED760" alt="Spotify">
+                    <div class="desktop-platform-info"><div class="desktop-platform-name">Spotify</div></div>
+                </a>
+
+                <a class="desktop-platform-link rv" style="--d:.26s" href="https://music.apple.com/gb/artist/soumalya-mandal/1782114704" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://cdn.simpleicons.org/applemusic/FA243C" alt="Apple Music">
+                    <div class="desktop-platform-info"><div class="desktop-platform-name">Apple Music</div></div>
+                </a>
+
+                <a class="desktop-platform-link rv" style="--d:.33s" href="https://www.jiosaavn.com" target="_blank" rel="noopener">
+                    <img class="desktop-platform-icon" src="https://www.google.com/s2/favicons?domain=jiosaavn.com&sz=128" alt="JioSaavn">
+                    <div class="desktop-platform-info"><div class="desktop-platform-name">JioSaavn</div></div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <a class="footer-link" href="terms.html">Terms &amp; Conditions</a>
+    <div class="footer-copyright">©2026 Website design by ѕσυмαℓуα</div>
+</footer>
+
+<div class="site-name">ѕσυмαℓуα мαn∂αℓ</div>
+
+<!-- INTRO -->
+<div class="intro">
+    <div class="name">ѕσυмαℓуα мαn∂αℓ</div>
+</div>
+
+<script>
+/* =================================
+   SCROLL STORY — direct mapping (no queue), so fast scrolling
+   never skips or lags: the text always matches the scroll position.
+================================= */
+const root = document.documentElement;
+const about = document.getElementById("mobileAbout");
+const passages = [1,2,3,4].map(n => document.getElementById("passage" + n));
+const streaming = document.getElementById("streamingPlatforms");
+const hint = document.getElementById("scrollHint");
+const bar = document.getElementById("progress");
+const bounds = [80, 300, 700, 1100, 1500];
+let lastStage = -2, ticking = false;
+
+function stageOf(y){
+    let s = -1;
+    for(const b of bounds){ if(y >= b) s++; else break; }
+    return s;
+}
+
+function update(){
+    ticking = false;
+    const y = window.scrollY;
+    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+
+    bar.style.transform = "scaleX(" + Math.min(1, y / max) + ")";
+
+    if(innerWidth > 600) return;
+
+    root.style.setProperty("--p", Math.min(1, y / 1500).toFixed(3));
+    hint.classList.toggle("off", y > 30);
+
+    const s = stageOf(y);
+    if(s !== lastStage){
+        lastStage = s;
+        about.classList.toggle("show", s >= 0);
+        passages.forEach((p, i) => p.classList.toggle("active", i === s - 1));
+    }
+    about.classList.toggle("gone", streaming.getBoundingClientRect().top < innerHeight * 0.75);
+}
+
+function onScroll(){
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+}
+addEventListener("scroll", onScroll, {passive:true});
+addEventListener("resize", () => { lastStage = -2; onScroll(); });
+update();
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+}), {threshold:.15});
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* soft cursor glow (desktop only) */
+const glow = document.getElementById("glow");
+if(matchMedia("(hover:hover) and (min-width:601px)").matches){
+    addEventListener("mousemove", e => {
+        glow.style.opacity = 1;
+        glow.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+    }, {passive:true});
+}
+</script>
+
+</body>
+</html>
